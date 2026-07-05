@@ -45,8 +45,8 @@
   --color-emerald-foreground: var(--emerald-foreground);
   --color-surface: var(--surface);
   --color-surface-elevated: var(--surface-elevated);
-  --font-display: "Outfit Variable", "Outfit", system-ui, sans-serif;
-  --font-body: "Inter Variable", "Inter", system-ui, sans-serif;
+  --font-display: "Space Grotesk Variable", "Space Grotesk", system-ui, sans-serif;
+  --font-body: "DM Sans Variable", "DM Sans", system-ui, sans-serif;
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -65,60 +65,61 @@
 :root {
   --radius: 0.875rem;
 
-  /* Base surfaces — warm off-white paper */
-  --background: oklch(0.985 0.004 90);
-  --surface: oklch(0.97 0.006 90);
-  --surface-elevated: oklch(1 0 0);
-  --foreground: oklch(0.19 0.03 265);
-  --ink: oklch(0.19 0.03 265);
+  /* Ocean Deep — enterprise MedTech dark theme */
+  /* #0c2340 deep navy · #1a4a6e mid navy · #2d8a9e teal · #5cbdb9 aqua */
+  --background: oklch(0.19 0.05 250);
+  --surface: oklch(0.24 0.06 245);
+  --surface-elevated: oklch(0.28 0.065 245);
+  --foreground: oklch(0.98 0.005 220);
+  --ink: oklch(0.98 0.005 220);
 
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.19 0.03 265);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.19 0.03 265);
+  --card: oklch(0.24 0.06 245);
+  --card-foreground: oklch(0.98 0.005 220);
+  --popover: oklch(0.24 0.06 245);
+  --popover-foreground: oklch(0.98 0.005 220);
 
-  /* Primary = deep navy ink */
-  --primary: oklch(0.24 0.055 265);
-  --primary-foreground: oklch(0.985 0.004 90);
+  /* Primary = aqua accent (call to action) */
+  --primary: oklch(0.78 0.09 195);
+  --primary-foreground: oklch(0.19 0.05 250);
 
-  --secondary: oklch(0.955 0.008 90);
-  --secondary-foreground: oklch(0.24 0.055 265);
+  --secondary: oklch(0.32 0.06 240);
+  --secondary-foreground: oklch(0.98 0.005 220);
 
-  --muted: oklch(0.955 0.008 90);
-  --muted-foreground: oklch(0.5 0.02 265);
+  --muted: oklch(0.28 0.05 240);
+  --muted-foreground: oklch(0.78 0.02 220);
 
-  --accent: oklch(0.955 0.02 25);
-  --accent-foreground: oklch(0.35 0.15 25);
+  --accent: oklch(0.32 0.07 210);
+  --accent-foreground: oklch(0.98 0.005 220);
 
-  /* Pulse = coral / heartbeat red — the life-saving accent */
-  --pulse: oklch(0.63 0.22 25);
-  --pulse-foreground: oklch(0.99 0 0);
+  /* Pulse = aqua brand accent (repurposed from coral to Ocean Deep aqua) */
+  --pulse: oklch(0.78 0.09 195);
+  --pulse-foreground: oklch(0.19 0.05 250);
 
-  /* Emerald = clinical compliance / positive metrics */
-  --emerald: oklch(0.62 0.14 155);
+  /* Emerald = mid teal for secondary emphasis */
+  --emerald: oklch(0.62 0.09 210);
   --emerald-foreground: oklch(0.99 0 0);
 
-  --destructive: oklch(0.55 0.24 27);
+  --destructive: oklch(0.62 0.22 27);
   --destructive-foreground: oklch(0.99 0 0);
 
-  --border: oklch(0.9 0.01 90);
-  --input: oklch(0.92 0.008 90);
-  --ring: oklch(0.63 0.22 25);
+  --border: oklch(1 0 0 / 8%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.78 0.09 195);
 
-  --chart-1: oklch(0.63 0.22 25);
-  --chart-2: oklch(0.62 0.14 155);
+  --chart-1: oklch(0.78 0.09 195);
+  --chart-2: oklch(0.62 0.09 210);
   --chart-3: oklch(0.55 0.13 240);
-  --chart-4: oklch(0.75 0.15 80);
-  --chart-5: oklch(0.5 0.15 300);
+  --chart-4: oklch(0.85 0.06 190);
+  --chart-5: oklch(0.5 0.09 220);
 
-  --sidebar: oklch(0.985 0.004 90);
-  --sidebar-foreground: oklch(0.19 0.03 265);
-  --sidebar-primary: oklch(0.24 0.055 265);
-  --sidebar-primary-foreground: oklch(0.985 0.004 90);
-  --sidebar-accent: oklch(0.955 0.008 90);
-  --sidebar-accent-foreground: oklch(0.24 0.055 265);
-  --sidebar-border: oklch(0.9 0.01 90);
-  --sidebar-ring: oklch(0.63 0.22 25);
+  --sidebar: oklch(0.19 0.05 250);
+  --sidebar-foreground: oklch(0.98 0.005 220);
+  --sidebar-primary: oklch(0.78 0.09 195);
+  --sidebar-primary-foreground: oklch(0.19 0.05 250);
+  --sidebar-accent: oklch(0.28 0.065 245);
+  --sidebar-accent-foreground: oklch(0.98 0.005 220);
+  --sidebar-border: oklch(1 0 0 / 8%);
+  --sidebar-ring: oklch(0.78 0.09 195);
 }
 
 .dark {
@@ -217,11 +218,11 @@
 }
 
 @utility card-surface {
-  background: var(--surface-elevated);
+  background: color-mix(in oklch, var(--surface) 60%, transparent);
   border: 1px solid var(--border);
   border-radius: var(--radius-2xl);
-  box-shadow: 0 1px 2px rgba(11, 30, 63, 0.04),
-              0 8px 24px -12px rgba(11, 30, 63, 0.08);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2),
+              0 20px 40px -20px rgba(0, 0, 0, 0.35);
 }
 
 @utility section-y {
