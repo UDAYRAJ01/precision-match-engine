@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, HeartPulse, Activity, ShieldCheck, Wifi } from "lucide-react";
-import { Section, SectionHeader, DeviceMock } from "@/components/site/section";
+import { ArrowRight, HeartPulse, ShieldCheck, Wifi, Activity, Waves } from "lucide-react";
 import { CtaLink } from "@/components/site/cta";
 
 export const Route = createFileRoute("/")({
@@ -9,149 +8,149 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <>
+    <div className="container-page space-y-24 py-16 md:py-24">
       {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 -z-10"
-          style={{
-            background:
-              "radial-gradient(60% 60% at 80% 10%, color-mix(in oklch, var(--pulse) 12%, transparent), transparent 70%), radial-gradient(50% 50% at 10% 90%, color-mix(in oklch, var(--emerald) 10%, transparent), transparent 70%)",
-          }}
-        />
-        <div className="container-page grid gap-14 py-20 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:py-28">
-          <div>
-            <span className="eyebrow"><span className="pulse-dot" /> MedTech Innovation Platform</span>
-            <h1 className="mt-6 font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-              Every second matters.
-              <br />
-              <span className="text-pulse">Every compression counts.</span>
-            </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              CPR PRAYAS™ is an intelligent real-time CPR guidance ecosystem delivering
-              clinical-grade resuscitation feedback during Sudden Cardiac Arrest —
-              engineered for healthcare teams, first responders, and everyday bystanders.
+      <section className="relative flex flex-col items-center text-center">
+        <div className="inline-flex items-center gap-2 rounded-full border border-pulse/25 bg-surface px-3 py-1">
+          <span className="pulse-dot" />
+          <span className="font-display text-xs font-medium uppercase tracking-wider text-pulse">
+            Clinical Grade MedTech
+          </span>
+        </div>
+
+        <h1 className="mt-8 font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-8xl">
+          Intelligent CPR
+          <br />
+          <span className="bg-gradient-to-r from-emerald to-pulse bg-clip-text text-transparent">
+            Guidance Systems.
+          </span>
+        </h1>
+        <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+          Precision metronome, depth feedback, and real-time analytics engineered for
+          professional responders. CPR PRAYAS™ bridges the gap between effort and outcomes.
+        </p>
+        <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+          <CtaLink to="/contact" className="shadow-[0_0_28px_color-mix(in_oklch,var(--pulse)_35%,transparent)]">
+            Request demo <ArrowRight className="h-4 w-4" />
+          </CtaLink>
+          <CtaLink to="/products" variant="outline">View products</CtaLink>
+        </div>
+      </section>
+
+      {/* Bento grid */}
+      <section className="grid grid-cols-1 gap-6 md:grid-cols-12">
+        {/* PRAYAS ONE — large */}
+        <div className="group relative overflow-hidden rounded-3xl border border-border bg-surface/60 p-8 md:col-span-8">
+          <div className="relative z-10">
+            <div className="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-widest text-pulse">
+              <HeartPulse className="h-4 w-4" /> PRAYAS ONE
+            </div>
+            <h3 className="mt-3 font-display text-3xl font-bold">The Core Guidance Device</h3>
+            <p className="mt-4 max-w-md text-muted-foreground">
+              Single-responder pocket device with high-fidelity haptic feedback, 110 BPM
+              metronome, and visual depth indicators. IP67, defibrillator-safe.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <CtaLink to="/contact">Request live demo <ArrowRight className="h-4 w-4" /></CtaLink>
-              <CtaLink to="/technology" variant="outline">Explore the technology</CtaLink>
-            </div>
-            <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-border pt-6 text-xs font-medium text-muted-foreground">
-              <span>Engineered to AHA 2025 Guidelines</span>
-              <span className="text-pulse">•</span>
-              <span>Dual Adult & Infant modes</span>
-              <span className="text-pulse">•</span>
-              <span>Cloud resuscitation telemetry</span>
-            </div>
+            <CtaLink to="/products" variant="outline" className="mt-6">Learn more</CtaLink>
           </div>
-          <div className="mx-auto w-full max-w-md">
-            <DeviceMock />
-            <div className="mt-4 rounded-xl border border-emerald/25 bg-emerald/8 px-4 py-2.5 text-center text-xs font-semibold uppercase tracking-wider text-emerald">
-              Real-time multi-sensor feedback
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/2 bg-gradient-to-tl from-emerald/25 to-transparent transition-opacity group-hover:opacity-100" />
+          <div className="pointer-events-none absolute -bottom-12 -right-12 h-64 w-64 rounded-full border-4 border-pulse/20 bg-background" />
+        </div>
+
+        {/* PRO */}
+        <div className="flex flex-col justify-between rounded-3xl border border-border bg-surface/60 p-8 md:col-span-4">
+          <div>
+            <div className="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-widest text-pulse">
+              <ShieldCheck className="h-4 w-4" /> PRO
+            </div>
+            <h3 className="mt-3 font-display text-3xl font-bold">Enterprise Fleet</h3>
+          </div>
+          <p className="mt-4 text-muted-foreground">
+            Centralized management for hospital departments, Code Blue teams, and EMS
+            services with 360° LED rings and live telemetry.
+          </p>
+        </div>
+
+        {/* CONNECT — inverted card */}
+        <div className="rounded-3xl bg-pulse p-8 text-pulse-foreground md:col-span-4">
+          <div className="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-widest opacity-80">
+            <Wifi className="h-4 w-4" /> CONNECT
+          </div>
+          <h3 className="mt-3 font-display text-3xl font-bold">Cloud Analytics</h3>
+          <p className="mt-4 font-medium">
+            Post-event debriefing tools with automated PDF reporting and AHA 2025
+            compliance tracking across your entire fleet.
+          </p>
+        </div>
+
+        {/* Clinical Accuracy */}
+        <div className="flex flex-col items-center gap-8 rounded-3xl border border-border bg-gradient-to-br from-surface to-background p-8 md:col-span-8 md:flex-row">
+          <div className="flex-1">
+            <div className="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-widest text-pulse">
+              <Waves className="h-4 w-4" /> CLINICAL ACCURACY
+            </div>
+            <h3 className="mt-3 font-display text-3xl font-bold">Validated to gold standard</h3>
+            <p className="mt-4 text-muted-foreground">
+              Validated against gold-standard manikins with ±2 mm depth precision and
+              sub-millisecond rhythm tracking across rigid floors and hospital mattresses.
+            </p>
+          </div>
+          <div className="grid w-full grid-cols-2 gap-4 md:w-auto">
+            <div className="rounded-2xl border border-border bg-background/50 p-6">
+              <div className="font-display text-3xl font-bold text-pulse">98%</div>
+              <div className="mt-1 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                Accuracy
+              </div>
+            </div>
+            <div className="rounded-2xl border border-border bg-background/50 p-6">
+              <div className="font-display text-3xl font-bold text-pulse">2.5×</div>
+              <div className="mt-1 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                Survival ↑
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Trust / accreditation strip */}
-      <div className="border-y border-border bg-surface">
-        <div className="container-page grid grid-cols-2 gap-4 py-6 text-sm font-semibold text-ink md:grid-cols-4">
-          <span>🏛️ IIT MedTech Incubation</span>
-          <span>🧬 BIRAC Supported</span>
-          <span>🏅 Startup India Flagship</span>
-          <span>🛡️ ISO 13485 Certified</span>
-        </div>
-      </div>
+      {/* Trust bar */}
+      <section className="grid grid-cols-2 gap-6 rounded-3xl border border-border bg-surface/40 p-8 text-center md:grid-cols-4">
+        {[
+          "AHA 2025 Aligned",
+          "ISO 13485",
+          "BIRAC Supported",
+          "IIT MedTech Incubation",
+        ].map((l) => (
+          <div key={l} className="font-display text-sm font-semibold uppercase tracking-widest text-muted-foreground">
+            {l}
+          </div>
+        ))}
+      </section>
 
-      {/* Reality gap metrics */}
-      <Section id="problem" bordered={false}>
-        <SectionHeader
-          eyebrow="The reality gap"
-          title="Sudden cardiac arrest claims 6M+ lives every year"
-          subtitle="The barrier to survival isn't willingness — it's the absence of real-time feedback during compressions."
-        />
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {[
-            { n: "< 10%", l: "Global out-of-hospital SCA survival rate", d: "Without immediate high-quality CPR, survival drops by 10% every minute." },
-            { n: "70%", l: "Of unguided CPR compressions fail", d: "Rescuers compress too shallowly or fatigue within 60 seconds without guidance." },
-            { n: "2.5×", l: "Increase in survival with audio guidance", d: "Real-time depth and rate cues dramatically improve return of spontaneous circulation.", highlight: true },
-          ].map((m) => (
-            <div key={m.l} className={`card-surface p-8 ${m.highlight ? "border-pulse/40 ring-1 ring-pulse/20" : ""}`}>
-              <div className={`font-display text-5xl font-bold tracking-tight ${m.highlight ? "text-pulse" : "text-ink"}`}>{m.n}</div>
-              <h3 className="mt-4 font-display text-lg font-semibold">{m.l}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{m.d}</p>
+      {/* CTA band */}
+      <section className="relative overflow-hidden rounded-[2.5rem] border border-border bg-gradient-to-br from-surface-elevated to-surface p-12 md:p-20">
+        <div className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-pulse/15 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-24 -left-24 h-80 w-80 rounded-full bg-emerald/20 blur-3xl" />
+        <div className="relative z-10 flex flex-col items-start justify-between gap-12 md:flex-row md:items-center">
+          <div className="max-w-xl">
+            <div className="mb-4 inline-flex items-center gap-2">
+              <Activity className="h-5 w-5 text-pulse" />
+              <span className="font-display text-xs font-bold uppercase tracking-widest text-pulse">
+                Institutional deployment
+              </span>
             </div>
-          ))}
-        </div>
-      </Section>
-
-      {/* Ecosystem */}
-      <Section id="ecosystem" surface>
-        <SectionHeader
-          eyebrow="The platform"
-          title="A connected resuscitation ecosystem"
-          subtitle="More than a device — hardware, mobile, and cloud analytics designed for universal readiness."
-        />
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {[
-            { icon: <HeartPulse className="h-6 w-6" />, name: "CPR PRAYAS™ One", desc: "Ultra-portable pocket CPR audio feedback device for bystanders, transit, hotels, and first-aid kits.", to: "/products" },
-            { icon: <ShieldCheck className="h-6 w-6" />, name: "CPR PRAYAS™ Pro", desc: "Clinical-grade system with 360° RGB LED force rings, 360J shock immunity, and live Wi-Fi telemetry.", to: "/products", featured: true },
-            { icon: <Wifi className="h-6 w-6" />, name: "CPR PRAYAS™ Connect", desc: "Companion mobile app relaying live CPR waveforms, dispatcher links, and training analytics via BLE 5.2.", to: "/products" },
-          ].map((p) => (
-            <div key={p.name} className={`card-surface flex flex-col p-8 ${p.featured ? "border-pulse/50 ring-1 ring-pulse/20" : ""}`}>
-              <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-pulse/10 text-pulse">
-                {p.icon}
-              </div>
-              {p.featured && <span className="eyebrow mb-2 self-start">Clinical grade</span>}
-              <h3 className="font-display text-xl font-semibold">{p.name}</h3>
-              <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
-              <CtaLink to={p.to} variant="outline" className="mt-6 self-start">Learn more</CtaLink>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      {/* Four steps */}
-      <Section>
-        <SectionHeader
-          eyebrow="How it works"
-          title="Four steps to flawless resuscitation"
-          subtitle="Intuitive multi-sensory guidance reducing emergency panic."
-        />
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            ["01", "Instant placement", "Position device on the lower sternum as indicated by alignment icons."],
-            ["02", "Follow metronome", "Begin compressions in sync with the clear 110 BPM acoustic pulse."],
-            ["03", "Depth correction", "Real-time spoken prompts and LED rings guide exact 5–6 cm depth."],
-            ["04", "Chest recoil alert", "Detects incomplete recoil, prompting rescuers to lift for cardiac refill."],
-          ].map(([n, t, d]) => (
-            <div key={n} className="card-surface p-6">
-              <div className="font-display text-xs font-bold tracking-widest text-pulse">STEP {n}</div>
-              <h4 className="mt-3 font-display text-base font-semibold">{t}</h4>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{d}</p>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      {/* CTA */}
-      <Section surface>
-        <div className="card-surface flex flex-col items-center gap-6 p-10 text-center md:p-16">
-          <Activity className="h-10 w-10 text-pulse" />
-          <h2 className="max-w-2xl font-display text-3xl font-bold sm:text-4xl">
-            Bring standardized resuscitation to your institution.
-          </h2>
-          <p className="max-w-xl text-base text-muted-foreground">
-            Hospitals, school districts, hotel groups, and public transit networks
-            partner with CPR PRAYAS™ to elevate every second of care.
-          </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <CtaLink to="/contact">Request institutional demo <ArrowRight className="h-4 w-4" /></CtaLink>
+            <h2 className="font-display text-4xl font-bold md:text-5xl">
+              Ready to modernize your emergency response?
+            </h2>
+            <p className="mt-6 text-lg text-muted-foreground">
+              Join leading hospitals, school districts, hotel groups, and transit networks
+              using CPR PRAYAS™ to save lives through data-driven resuscitation.
+            </p>
+          </div>
+          <div className="flex shrink-0 flex-wrap gap-3">
+            <CtaLink to="/contact">Contact sales <ArrowRight className="h-4 w-4" /></CtaLink>
             <CtaLink to="/applications" variant="outline">See deployments</CtaLink>
           </div>
         </div>
-      </Section>
-    </>
+      </section>
+    </div>
   );
 }
