@@ -1,0 +1,619 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { Section, SectionHeader } from "@/components/site/section";
+import { CtaLink } from "@/components/site/cta";
+import {
+  Check,
+  AlertTriangle,
+  Hotel,
+  Radio,
+  Volume2,
+  MapPin,
+  GraduationCap,
+  ClipboardCheck,
+  ShieldCheck,
+  Users,
+  Building2,
+  ArrowDown,
+  Award,
+} from "lucide-react";
+import type { ReactNode } from "react";
+
+export const Route = createFileRoute("/hotels")({
+  head: () => ({
+    meta: [
+      { title: "Hotel Safety | CPR PRAYAS™ Hospitality Emergency Response" },
+      { name: "description", content: "Revolutionizing emergency response in hotels. PRAYAS CPR Audio Feedback Device for guest and staff safety across reception, gym, pool, banquet, and conference areas." },
+      { property: "og:title", content: "PRAYAS Hospitality Safety" },
+      { property: "og:description", content: "Guided CPR support for hotel teams during the first critical minutes of a medical emergency." },
+    ],
+  }),
+  component: HotelsPage,
+});
+
+function HotelsPage() {
+  return (
+    <>
+      {/* COVER */}
+      <Section bordered={false}>
+        <div className="mx-auto max-w-3xl text-center">
+          <span className="eyebrow"><span className="pulse-dot" /> Hospitality safety</span>
+          <h1 className="mt-6 font-display text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+            Revolutionizing emergency response{" "}
+            <span className="text-pulse">in hotels</span>
+          </h1>
+          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+            A professional PRAYAS pitch deck for guest and staff safety — helping
+            hotels respond confidently during the first critical minutes of a
+            medical emergency through guided CPR support.
+          </p>
+          <div className="mt-8 flex justify-center gap-3">
+            <CtaLink to="/contact">Request hotel demo</CtaLink>
+          </div>
+        </div>
+      </Section>
+
+      {/* 01 - CHALLENGE */}
+      <SectionBlock
+        n="01"
+        eyebrow="The hospitality challenge"
+        title="Hotel emergency response challenge"
+        surface
+      >
+        <div className="grid gap-8 lg:grid-cols-[1.2fr_1fr]">
+          <div className="card-surface p-8">
+            <div className="flex items-center gap-3 text-pulse">
+              <AlertTriangle className="h-6 w-6" />
+              <h3 className="font-display text-xl font-semibold">What needs to improve</h3>
+            </div>
+            <p className="mt-4 leading-relaxed text-muted-foreground">
+              Hotels operate 24×7 with guests spread across guest rooms,
+              restaurants, banquet halls, swimming pools, fitness centers, spas,
+              conference rooms, and public spaces. During a medical emergency,
+              every second matters — yet trained responders and medical teams
+              may not be immediately available.
+            </p>
+            <p className="mt-3 leading-relaxed text-muted-foreground">
+              A structured emergency response system helps staff act confidently
+              until professional medical responders arrive.
+            </p>
+          </div>
+          <BulletCard
+            title="Current challenges"
+            items={[
+              "Medical emergencies can occur anywhere on premises",
+              "Different departments must coordinate quickly",
+              "Staff confidence varies during emergencies",
+              "Ambulance response may take several minutes",
+              "Guest safety directly influences hotel reputation",
+              "Prepared hotels build trust with guests & corporate clients",
+            ]}
+          />
+        </div>
+      </SectionBlock>
+
+      {/* 02 - WHY PRAYAS FITS */}
+      <SectionBlock
+        n="02"
+        eyebrow="Operational fit"
+        title="Why PRAYAS fits hotel operations"
+      >
+        <div className="grid gap-8 lg:grid-cols-2">
+          <div className="card-surface p-8">
+            <div className="flex items-center gap-3 text-pulse">
+              <Hotel className="h-6 w-6" />
+              <h3 className="font-display text-xl font-semibold">PRAYAS fit</h3>
+            </div>
+            <p className="mt-4 leading-relaxed text-muted-foreground">
+              PRAYAS is a CPR Audio Feedback Device designed to support trained
+              hotel staff during the first critical minutes of a cardiac
+              emergency. It provides step-by-step voice guidance, helping
+              responders maintain proper CPR rhythm and compression quality
+              while waiting for emergency medical services.
+            </p>
+            <p className="mt-4 rounded-xl border border-border/60 bg-background/60 p-4 text-sm italic text-muted-foreground">
+              "A simple tool for the first critical minutes — improving
+              confidence, consistency, and emergency readiness without replacing
+              certified medical response."
+            </p>
+          </div>
+          <BulletCard
+            title="Key advantages"
+            items={[
+              "Guided CPR technique",
+              "Audio-assisted instructions",
+              "Real-time compression feedback",
+              "Easy operation after basic training",
+              "Supports hotel emergency SOPs",
+              "Improves team coordination",
+            ]}
+          />
+        </div>
+      </SectionBlock>
+
+      {/* 03 - INTRODUCING PRAYAS */}
+      <SectionBlock
+        n="03"
+        eyebrow="The device"
+        title="Introducing PRAYAS"
+        subtitle="CPR Audio Feedback Device designed for guided emergency support."
+        surface
+      >
+        <div className="grid gap-8 lg:grid-cols-3">
+          <FeatureCard
+            icon={<Volume2 className="h-6 w-6" />}
+            title="Real-time guidance"
+            body="Voice prompts guide responders through correct CPR rhythm and compression quality."
+          />
+          <FeatureCard
+            icon={<Radio className="h-6 w-6" />}
+            title="Portable support"
+            body="Compact design for easy storage, transportation, and rapid deployment anywhere in the hotel."
+          />
+          <FeatureCard
+            icon={<GraduationCap className="h-6 w-6" />}
+            title="Training ready"
+            body="Simple enough to become part of routine staff emergency preparedness programs."
+          />
+        </div>
+        <div className="mt-8">
+          <BulletCard
+            title="Recommended placement"
+            columns={2}
+            items={[
+              "Front Desk",
+              "Reception",
+              "Security Office",
+              "Lobby",
+              "Gym",
+              "Swimming Pool",
+              "Banquet Hall",
+              "Conference Area",
+              "Restaurant",
+              "Spa",
+              "Staff Medical Room",
+              "Concierge",
+            ]}
+          />
+        </div>
+      </SectionBlock>
+
+      {/* 04 - WORKFLOW */}
+      <SectionBlock
+        n="04"
+        eyebrow="Response workflow"
+        title="Hotel emergency response workflow"
+        subtitle="How PRAYAS supports staff during the first critical minutes."
+      >
+        <div className="mx-auto max-w-3xl space-y-4">
+          {WORKFLOW.map((step, i) => (
+            <div key={step.title}>
+              <div className="card-surface flex items-start gap-5 p-6">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-pulse text-pulse-foreground font-display font-bold">
+                  {i + 1}
+                </div>
+                <div>
+                  <h4 className="font-display text-lg font-semibold">{step.title}</h4>
+                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                    {step.body}
+                  </p>
+                </div>
+              </div>
+              {i < WORKFLOW.length - 1 && (
+                <div className="flex justify-center py-2 text-muted-foreground">
+                  <ArrowDown className="h-5 w-5" />
+                </div>
+              )}
+            </div>
+          ))}
+          <p className="mt-6 text-center text-sm italic text-muted-foreground">
+            PRAYAS provides calm, structured guidance during the most critical
+            minutes — without replacing certified medical response.
+          </p>
+        </div>
+      </SectionBlock>
+
+      {/* 05 - BENEFITS */}
+      <SectionBlock
+        n="05"
+        eyebrow="Outcomes"
+        title="Benefits for hotels"
+        surface
+      >
+        <div className="grid gap-6 md:grid-cols-3">
+          <BenefitCard
+            icon={<Users className="h-6 w-6" />}
+            audience="Guests"
+            title="Safety confidence"
+            body="Visible emergency preparedness reassures guests, families, and corporate visitors."
+          />
+          <BenefitCard
+            icon={<ShieldCheck className="h-6 w-6" />}
+            audience="Staff"
+            title="Clear emergency protocol"
+            body="Guided instructions reduce uncertainty and improve confidence during response."
+          />
+          <BenefitCard
+            icon={<Building2 className="h-6 w-6" />}
+            audience="Brand"
+            title="Stronger duty of care"
+            body="Demonstrates commitment to guest wellbeing and responsible hospitality management."
+          />
+        </div>
+        <div className="mt-8 grid gap-6 lg:grid-cols-2">
+          <BulletCard
+            title="Brand benefits"
+            items={[
+              "Enhanced guest trust",
+              "Better service quality perception",
+              "Stronger brand reputation",
+              "Competitive differentiation",
+              "Improved guest satisfaction",
+              "Supports premium hospitality standards",
+            ]}
+          />
+          <BulletCard
+            title="Operational benefits"
+            items={[
+              "Faster emergency response",
+              "Better staff coordination",
+              "Consistent CPR guidance",
+              "Supports emergency drills",
+              "Improved preparedness across departments",
+            ]}
+          />
+        </div>
+      </SectionBlock>
+
+      {/* 06 - IMPLEMENTATION */}
+      <SectionBlock
+        n="06"
+        eyebrow="Rollout"
+        title="Implementation plan"
+        subtitle="Practical steps for successful deployment."
+      >
+        <div className="grid gap-6 lg:grid-cols-3">
+          <StepCard
+            step="01"
+            icon={<MapPin className="h-5 w-5" />}
+            title="Place"
+            body="Install devices at strategic high-footfall locations."
+            items={[
+              "Lobby",
+              "Reception & Front Desk",
+              "Gym & Pool area",
+              "Banquet Hall",
+              "Restaurant",
+              "Conference Rooms",
+              "Security & Staff Medical Room",
+            ]}
+          />
+          <StepCard
+            step="02"
+            icon={<GraduationCap className="h-5 w-5" />}
+            title="Train"
+            body="CPR awareness and PRAYAS device training for key hotel personnel."
+            items={[
+              "Front Office & Security",
+              "Housekeeping",
+              "F&B and Banquet Operations",
+              "Recreation & Duty Managers",
+              "Engineering Supervisors",
+              "Includes drills & simulations",
+            ]}
+          />
+          <StepCard
+            step="03"
+            icon={<ClipboardCheck className="h-5 w-5" />}
+            title="Review"
+            body="Maintain readiness through regular inspection and refresher training."
+            items={[
+              "Monthly device inspection",
+              "Battery & accessory checks",
+              "Quarterly refresher sessions",
+              "Mock emergency drills",
+              "Maintenance log updates",
+              "SOP compliance reviews",
+            ]}
+          />
+        </div>
+      </SectionBlock>
+
+      {/* 07 - RETURN ON VALUE */}
+      <SectionBlock
+        n="07"
+        eyebrow="Return on value"
+        title="Why hotels should invest"
+        surface
+      >
+        <div className="grid gap-8 lg:grid-cols-[1fr_1.2fr]">
+          <div className="card-surface p-8">
+            <div className="flex items-center gap-3 text-pulse">
+              <Award className="h-6 w-6" />
+              <h3 className="font-display text-xl font-semibold">Value delivered</h3>
+            </div>
+            <p className="mt-4 leading-relaxed text-muted-foreground">
+              PRAYAS helps hotels strengthen guest safety while supporting staff
+              with clear emergency guidance — an investment in preparedness that
+              elevates every dimension of hospitality service.
+            </p>
+          </div>
+          <BulletCard
+            title="Business outcomes"
+            columns={2}
+            items={[
+              "Better emergency preparedness",
+              "Increased guest confidence",
+              "Improved staff readiness",
+              "Supports ESG & safety initiatives",
+              "Enhanced brand reputation",
+              "Demonstrates duty of care",
+              "Adds value to premium services",
+              "Alignment with global standards",
+            ]}
+          />
+        </div>
+      </SectionBlock>
+
+      {/* 08 - INSTALLATION LOCATIONS */}
+      <SectionBlock
+        n="08"
+        eyebrow="Coverage map"
+        title="Ideal installation locations"
+      >
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+          {LOCATIONS.map((loc) => (
+            <div key={loc} className="card-surface flex items-center gap-2 px-4 py-3 text-sm">
+              <MapPin className="h-4 w-4 shrink-0 text-pulse" />
+              <span>{loc}</span>
+            </div>
+          ))}
+        </div>
+      </SectionBlock>
+
+      {/* 09 - TRAINING */}
+      <SectionBlock
+        n="09"
+        eyebrow="Enablement"
+        title="Training & certification"
+        surface
+      >
+        <div className="grid gap-6 lg:grid-cols-2">
+          <BulletCard
+            title="Training program"
+            items={[
+              "CPR fundamentals",
+              "Hands-on practice",
+              "Device familiarization",
+              "Emergency workflow",
+              "Mock drills",
+              "Refresher training",
+            ]}
+          />
+          <BulletCard
+            title="Participants"
+            items={[
+              "Front Office",
+              "Security",
+              "Housekeeping",
+              "F&B",
+              "Banquet",
+              "Recreation",
+              "Duty Managers",
+            ]}
+          />
+        </div>
+      </SectionBlock>
+
+      {/* 10 - CONCLUSION */}
+      <Section>
+        <div className="mx-auto max-w-3xl text-center">
+          <span className="eyebrow-emerald">Conclusion</span>
+          <h2 className="mt-6 font-display text-3xl font-bold tracking-tight sm:text-4xl">
+            Creating safer <span className="text-pulse">hospitality experiences</span>
+          </h2>
+          <p className="mt-6 leading-relaxed text-muted-foreground">
+            PRAYAS enables hotels to respond confidently during the first
+            critical minutes of a medical emergency through guided CPR support,
+            structured emergency workflows, and staff preparedness. By
+            integrating PRAYAS into hotel operations, hotels strengthen guest
+            safety, improve operational readiness, reinforce duty of care, and
+            elevate service excellence.
+          </p>
+          <p className="mt-8 font-display text-2xl font-bold tracking-tight">
+            Thank you.
+          </p>
+          <p className="mt-2 text-sm text-muted-foreground">
+            PRAYAS — CPR Audio Feedback Device · Making every critical minute count.
+          </p>
+          <div className="mt-8 flex justify-center">
+            <CtaLink to="/contact">Request hotel demo</CtaLink>
+          </div>
+        </div>
+      </Section>
+    </>
+  );
+}
+
+/* ---------- helpers ---------- */
+
+function SectionBlock({
+  n,
+  eyebrow,
+  title,
+  subtitle,
+  surface,
+  children,
+}: {
+  n: string;
+  eyebrow: string;
+  title: string;
+  subtitle?: string;
+  surface?: boolean;
+  children: ReactNode;
+}) {
+  return (
+    <Section surface={surface}>
+      <div className="mb-10 flex flex-col items-start gap-4">
+        <div className="flex items-center gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-pulse/10 font-display font-bold text-pulse">
+            {n}
+          </div>
+          <span className="eyebrow-emerald">{eyebrow}</span>
+        </div>
+        <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
+          {title}
+        </h2>
+        {subtitle && (
+          <p className="max-w-2xl text-base leading-relaxed text-muted-foreground">
+            {subtitle}
+          </p>
+        )}
+      </div>
+      {children}
+    </Section>
+  );
+}
+
+function BulletCard({
+  title,
+  items,
+  columns = 1,
+}: {
+  title: string;
+  items: string[];
+  columns?: 1 | 2;
+}) {
+  return (
+    <div className="card-surface p-8">
+      <h3 className="font-display text-lg font-semibold text-pulse">{title}</h3>
+      <ul
+        className={`mt-5 grid gap-3 ${columns === 2 ? "sm:grid-cols-2" : ""}`}
+      >
+        {items.map((f) => (
+          <li key={f} className="flex items-start gap-3 text-sm">
+            <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald" />
+            <span>{f}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function FeatureCard({
+  icon,
+  title,
+  body,
+}: {
+  icon: ReactNode;
+  title: string;
+  body: string;
+}) {
+  return (
+    <div className="card-surface p-8">
+      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-pulse/10 text-pulse">
+        {icon}
+      </div>
+      <h3 className="mt-5 font-display text-lg font-semibold">{title}</h3>
+      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{body}</p>
+    </div>
+  );
+}
+
+function BenefitCard({
+  icon,
+  audience,
+  title,
+  body,
+}: {
+  icon: ReactNode;
+  audience: string;
+  title: string;
+  body: string;
+}) {
+  return (
+    <div className="card-surface p-8">
+      <div className="flex items-center gap-3">
+        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald/10 text-emerald">
+          {icon}
+        </div>
+        <span className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+          {audience}
+        </span>
+      </div>
+      <h3 className="mt-5 font-display text-lg font-semibold">{title}</h3>
+      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{body}</p>
+    </div>
+  );
+}
+
+function StepCard({
+  step,
+  icon,
+  title,
+  body,
+  items,
+}: {
+  step: string;
+  icon: ReactNode;
+  title: string;
+  body: string;
+  items: string[];
+}) {
+  return (
+    <div className="card-surface flex h-full flex-col p-8">
+      <div className="flex items-center justify-between">
+        <span className="font-display text-2xl font-bold text-pulse">{step}</span>
+        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-pulse/10 text-pulse">
+          {icon}
+        </div>
+      </div>
+      <h3 className="mt-4 font-display text-xl font-semibold">{title}</h3>
+      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{body}</p>
+      <ul className="mt-5 space-y-2">
+        {items.map((f) => (
+          <li key={f} className="flex items-start gap-2 text-sm">
+            <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald" />
+            <span>{f}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+const WORKFLOW = [
+  {
+    title: "Identify emergency",
+    body: "Recognize the medical emergency and immediately alert Front Desk, Security, or Duty Manager.",
+  },
+  {
+    title: "Retrieve PRAYAS device",
+    body: "Nearest trained staff member brings the CPR Audio Feedback Device to the emergency location.",
+  },
+  {
+    title: "Begin guided CPR",
+    body: "Follow the device's voice prompts while emergency medical services are on the way.",
+  },
+  {
+    title: "Handover to medical professionals",
+    body: "Continue support until ambulance personnel or healthcare professionals take over patient care.",
+  },
+];
+
+const LOCATIONS = [
+  "Reception",
+  "Front Desk",
+  "Concierge",
+  "Security Office",
+  "Lobby",
+  "Gym",
+  "Swimming Pool",
+  "Banquet Hall",
+  "Conference Centre",
+  "Restaurant",
+  "Rooftop Lounge",
+  "Spa",
+  "Kids Activity Area",
+  "Staff Medical Room",
+];
