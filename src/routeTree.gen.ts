@@ -13,6 +13,7 @@ import { Route as TechnologyRouteImport } from './routes/technology'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as PatentsRouteImport } from './routes/patents'
 import { Route as InvestorsRouteImport } from './routes/investors'
+import { Route as HotelsRouteImport } from './routes/hotels'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ClinicalValidationRouteImport } from './routes/clinical-validation'
@@ -38,6 +39,11 @@ const PatentsRoute = PatentsRouteImport.update({
 const InvestorsRoute = InvestorsRouteImport.update({
   id: '/investors',
   path: '/investors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HotelsRoute = HotelsRouteImport.update({
+  id: '/hotels',
+  path: '/hotels',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -78,6 +84,7 @@ export interface FileRoutesByFullPath {
   '/clinical-validation': typeof ClinicalValidationRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/hotels': typeof HotelsRoute
   '/investors': typeof InvestorsRoute
   '/patents': typeof PatentsRoute
   '/products': typeof ProductsRoute
@@ -90,6 +97,7 @@ export interface FileRoutesByTo {
   '/clinical-validation': typeof ClinicalValidationRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/hotels': typeof HotelsRoute
   '/investors': typeof InvestorsRoute
   '/patents': typeof PatentsRoute
   '/products': typeof ProductsRoute
@@ -103,6 +111,7 @@ export interface FileRoutesById {
   '/clinical-validation': typeof ClinicalValidationRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/hotels': typeof HotelsRoute
   '/investors': typeof InvestorsRoute
   '/patents': typeof PatentsRoute
   '/products': typeof ProductsRoute
@@ -117,6 +126,7 @@ export interface FileRouteTypes {
     | '/clinical-validation'
     | '/contact'
     | '/faq'
+    | '/hotels'
     | '/investors'
     | '/patents'
     | '/products'
@@ -129,6 +139,7 @@ export interface FileRouteTypes {
     | '/clinical-validation'
     | '/contact'
     | '/faq'
+    | '/hotels'
     | '/investors'
     | '/patents'
     | '/products'
@@ -141,6 +152,7 @@ export interface FileRouteTypes {
     | '/clinical-validation'
     | '/contact'
     | '/faq'
+    | '/hotels'
     | '/investors'
     | '/patents'
     | '/products'
@@ -154,6 +166,7 @@ export interface RootRouteChildren {
   ClinicalValidationRoute: typeof ClinicalValidationRoute
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
+  HotelsRoute: typeof HotelsRoute
   InvestorsRoute: typeof InvestorsRoute
   PatentsRoute: typeof PatentsRoute
   ProductsRoute: typeof ProductsRoute
@@ -188,6 +201,13 @@ declare module '@tanstack/react-router' {
       path: '/investors'
       fullPath: '/investors'
       preLoaderRoute: typeof InvestorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hotels': {
+      id: '/hotels'
+      path: '/hotels'
+      fullPath: '/hotels'
+      preLoaderRoute: typeof HotelsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -242,6 +262,7 @@ const rootRouteChildren: RootRouteChildren = {
   ClinicalValidationRoute: ClinicalValidationRoute,
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
+  HotelsRoute: HotelsRoute,
   InvestorsRoute: InvestorsRoute,
   PatentsRoute: PatentsRoute,
   ProductsRoute: ProductsRoute,
@@ -250,13 +271,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
