@@ -814,3 +814,62 @@ const LOCATIONS = [
   "Kids Activity Area",
   "Staff Medical Room",
 ];
+
+const COMPARISON: [string, string, string][] = [
+  ["Origin", "Made in India — designed for local + global markets", "Imported, high customs & shipping costs"],
+  ["Real-time voice guidance", "Multilingual voice + metronome + LED", "Metronome + basic display"],
+  ["Depth accuracy", "±1 mm (multi-sensor fusion, R² 0.984)", "±2–3 mm on soft surfaces"],
+  ["Soft-surface correction", "Filters mattress sag automatically", "Limited or none"],
+  ["Fatigue prediction (edge AI)", "Prompts rescuer rotation", "Not available"],
+  ["Connectivity", "BLE 5.2 + Wi-Fi telemetry (Pro)", "BLE only"],
+  ["Ingress rating", "IP67 waterproof & dustproof", "Typically IP54"],
+  ["Warranty", "3-year commercial / 5-year enterprise", "1–2 years standard"],
+  ["Pricing", "~40–60% lower TCO for Indian buyers", "Premium import pricing"],
+  ["Support & training", "Local team, onsite drills, refresher SLA", "Distributor-only, remote support"],
+];
+
+function PriceCard({
+  tier,
+  audience,
+  price,
+  features,
+  highlight,
+}: {
+  tier: string;
+  audience: string;
+  price: string;
+  features: string[];
+  highlight?: boolean;
+}) {
+  return (
+    <div
+      className={`card-surface flex h-full flex-col p-8 ${
+        highlight ? "ring-2 ring-pulse" : ""
+      }`}
+    >
+      <div className="flex items-center justify-between">
+        <span className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+          {audience}
+        </span>
+        {highlight && (
+          <span className="rounded-full bg-pulse px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-pulse-foreground">
+            Popular
+          </span>
+        )}
+      </div>
+      <h3 className="mt-4 font-display text-2xl font-bold">{tier}</h3>
+      <p className="mt-2 font-display text-lg font-semibold text-pulse">{price}</p>
+      <ul className="mt-6 space-y-3">
+        {features.map((f) => (
+          <li key={f} className="flex items-start gap-2 text-sm">
+            <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald" />
+            <span>{f}</span>
+          </li>
+        ))}
+      </ul>
+      <div className="mt-auto pt-6">
+        <CtaLink to="/contact">Request quote</CtaLink>
+      </div>
+    </div>
+  );
+}
