@@ -15,6 +15,9 @@ import {
   Building2,
   ArrowDown,
   Award,
+  Cpu,
+  Activity,
+  BadgeCheck,
 } from "lucide-react";
 import type { ReactNode } from "react";
 
@@ -405,6 +408,198 @@ function HotelsPage() {
       </SectionBlock>
 
       {/* 10 - CONCLUSION */}
+      {/* 10 - COMPETITIVE COMPARISON */}
+      <SectionBlock
+        n="10"
+        eyebrow="Competitive edge"
+        title="Why PRAYAS vs. other CPR feedback devices"
+        subtitle="How PRAYAS compares to global alternatives like CPRmeter2 and similar imported devices."
+      >
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[720px] border-collapse card-surface overflow-hidden">
+            <thead>
+              <tr className="bg-surface text-left">
+                <th className="px-6 py-4 font-display text-sm font-semibold">Parameter</th>
+                <th className="px-6 py-4 font-display text-sm font-semibold text-pulse">CPR PRAYAS™</th>
+                <th className="px-6 py-4 font-display text-sm font-semibold">CPRmeter2 / Imported</th>
+              </tr>
+            </thead>
+            <tbody>
+              {COMPARISON.map(([p, a, b], i) => (
+                <tr key={p} className={i % 2 ? "bg-surface/40" : ""}>
+                  <td className="border-t border-border px-6 py-3.5 text-sm font-semibold">{p}</td>
+                  <td className="border-t border-border px-6 py-3.5 text-sm">{a}</td>
+                  <td className="border-t border-border px-6 py-3.5 text-sm text-muted-foreground">{b}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </SectionBlock>
+
+      {/* 11 - CLINICAL ACCURACY */}
+      <SectionBlock
+        n="11"
+        eyebrow="Clinical accuracy"
+        title="Is PRAYAS clinically accurate?"
+        subtitle="Validated against gold-standard optical displacement encoders across rigid and soft surfaces."
+        surface
+      >
+        <div className="grid gap-6 md:grid-cols-3">
+          {[
+            ["R² = 0.984", "Correlation with gold-standard encoders", "Multi-sensor fusion matches optical reference measurements at p < 0.001."],
+            ["±1 mm", "Depth measurement accuracy", "True sternal displacement isolated from soft mattress sag."],
+            ["500 Hz", "Sensor sampling rate", "Zero perceptible latency between compression and audio feedback."],
+          ].map(([n, t, d]) => (
+            <div key={t} className="card-surface p-8 text-center">
+              <div className="font-display text-4xl font-bold text-emerald">{n}</div>
+              <h3 className="mt-4 font-display text-lg font-semibold">{t}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{d}</p>
+            </div>
+          ))}
+        </div>
+        <div className="mt-8">
+          <BulletCard
+            title="Trial highlights"
+            columns={2}
+            items={[
+              "150 rescuers evaluated (clinical nurses, first responders, bystanders)",
+              "10-minute continuous CPR simulation protocol",
+              "+68% target depth compliance (5–6 cm)",
+              "+45% full chest recoil quality",
+              "2.5× higher ROSC survival likelihood",
+              "Validated on rigid floors and soft hospital mattresses",
+            ]}
+          />
+        </div>
+      </SectionBlock>
+
+      {/* 12 - HOW IT WORKS */}
+      <SectionBlock
+        n="12"
+        eyebrow="Technology"
+        title="How PRAYAS works"
+        subtitle="A four-layer sensing pipeline powered by embedded edge AI."
+      >
+        <div className="grid gap-6 md:grid-cols-2">
+          <FeatureCard
+            icon={<Activity className="h-6 w-6" />}
+            title="Piezo-resistive force matrix"
+            body="Micro-calibrated pressure sensors measure vertical displacement across a 10–60 kg gradient."
+          />
+          <FeatureCard
+            icon={<Cpu className="h-6 w-6" />}
+            title="6-DOF inertial measurement unit"
+            body="Dual 3-axis accelerometers track 3D motion vectors for ±1 mm depth precision."
+          />
+          <FeatureCard
+            icon={<Radio className="h-6 w-6" />}
+            title="ARM Cortex-M4 processor"
+            body="32-bit CPU running custom Kalman filtering at 500 Hz for real-time feedback."
+          />
+          <FeatureCard
+            icon={<Volume2 className="h-6 w-6" />}
+            title="Multi-sensory feedback"
+            body="Voice prompts, metronome cadence, and LED status guide correct CPR rhythm and depth."
+          />
+        </div>
+      </SectionBlock>
+
+      {/* 13 - STANDARDS & CERTIFICATIONS */}
+      <SectionBlock
+        n="13"
+        eyebrow="Compliance"
+        title="Standards, guidelines & certifications"
+        subtitle="Aligned with global resuscitation councils and medical device regulations."
+        surface
+      >
+        <div className="grid gap-6 lg:grid-cols-2">
+          <BulletCard
+            title="Guideline alignment"
+            items={[
+              "AHA 2025 Guidelines for CPR & ECC",
+              "ERC (European Resuscitation Council) 2021+",
+              "ILCOR consensus on real-time feedback devices",
+              "100–120 BPM metronome cadence (110 BPM optimal)",
+              "5.0–6.0 cm compression depth enforcement",
+              "Full chest recoil monitoring",
+            ]}
+          />
+          <BulletCard
+            title="Regulatory & IP"
+            items={[
+              "CDSCO (India) medical device registration",
+              "CE MDR (EU 2017/745) preparation",
+              "US FDA 510(k) pathway in progress",
+              "ISO 13485 quality management alignment",
+              "IP67 waterproof & dustproof rated",
+              "Indian Patent Office specification filed + PCT pending",
+            ]}
+          />
+        </div>
+        <div className="mt-6 grid gap-4 sm:grid-cols-4">
+          {["AHA 2025", "ERC 2021", "CDSCO", "CE MDR"].map((b) => (
+            <div key={b} className="card-surface flex items-center justify-center gap-2 p-5">
+              <BadgeCheck className="h-5 w-5 text-emerald" />
+              <span className="font-display text-sm font-semibold">{b}</span>
+            </div>
+          ))}
+        </div>
+      </SectionBlock>
+
+      {/* 14 - INVESTMENT */}
+      <SectionBlock
+        n="14"
+        eyebrow="Investment"
+        title="Pricing & commercial models"
+        subtitle="Flexible procurement options for single properties, chains, and enterprise rollouts."
+      >
+        <div className="grid gap-6 md:grid-cols-3">
+          <PriceCard
+            tier="PRAYAS One"
+            audience="Single property"
+            price="Starter"
+            features={[
+              "Device unit + accessories",
+              "IP67 rated hardware",
+              "3-year commercial warranty",
+              "Basic staff training included",
+              "Standard placement kit",
+            ]}
+          />
+          <PriceCard
+            tier="PRAYAS Pro"
+            audience="Hotel chain / enterprise"
+            price="Enterprise"
+            highlight
+            features={[
+              "Fleet deployment (multi-property)",
+              "BLE + Wi-Fi telemetry",
+              "5-year enterprise warranty",
+              "Full staff certification program",
+              "Quarterly refresher & drills",
+              "Central dashboard & reporting",
+            ]}
+          />
+          <PriceCard
+            tier="Custom"
+            audience="Group / distributor"
+            price="On request"
+            features={[
+              "Volume pricing & AMC",
+              "Co-branded training material",
+              "Dedicated account manager",
+              "SLA-backed maintenance",
+              "Onsite installation support",
+            ]}
+          />
+        </div>
+        <p className="mt-6 text-center text-sm italic text-muted-foreground">
+          Contact us for a detailed quotation and property-specific ROI briefing.
+        </p>
+      </SectionBlock>
+
+      {/* 15 - CONCLUSION */}
       <Section>
         <div className="mx-auto max-w-3xl text-center">
           <span className="eyebrow-emerald">Conclusion</span>
@@ -617,3 +812,62 @@ const LOCATIONS = [
   "Kids Activity Area",
   "Staff Medical Room",
 ];
+
+const COMPARISON: [string, string, string][] = [
+  ["Origin", "Made in India — designed for local + global markets", "Imported, high customs & shipping costs"],
+  ["Real-time voice guidance", "Multilingual voice + metronome + LED", "Metronome + basic display"],
+  ["Depth accuracy", "±1 mm (multi-sensor fusion, R² 0.984)", "±2–3 mm on soft surfaces"],
+  ["Soft-surface correction", "Filters mattress sag automatically", "Limited or none"],
+  ["Fatigue prediction (edge AI)", "Prompts rescuer rotation", "Not available"],
+  ["Connectivity", "BLE 5.2 + Wi-Fi telemetry (Pro)", "BLE only"],
+  ["Ingress rating", "IP67 waterproof & dustproof", "Typically IP54"],
+  ["Warranty", "3-year commercial / 5-year enterprise", "1–2 years standard"],
+  ["Pricing", "~40–60% lower TCO for Indian buyers", "Premium import pricing"],
+  ["Support & training", "Local team, onsite drills, refresher SLA", "Distributor-only, remote support"],
+];
+
+function PriceCard({
+  tier,
+  audience,
+  price,
+  features,
+  highlight,
+}: {
+  tier: string;
+  audience: string;
+  price: string;
+  features: string[];
+  highlight?: boolean;
+}) {
+  return (
+    <div
+      className={`card-surface flex h-full flex-col p-8 ${
+        highlight ? "ring-2 ring-pulse" : ""
+      }`}
+    >
+      <div className="flex items-center justify-between">
+        <span className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+          {audience}
+        </span>
+        {highlight && (
+          <span className="rounded-full bg-pulse px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-pulse-foreground">
+            Popular
+          </span>
+        )}
+      </div>
+      <h3 className="mt-4 font-display text-2xl font-bold">{tier}</h3>
+      <p className="mt-2 font-display text-lg font-semibold text-pulse">{price}</p>
+      <ul className="mt-6 space-y-3">
+        {features.map((f) => (
+          <li key={f} className="flex items-start gap-2 text-sm">
+            <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald" />
+            <span>{f}</span>
+          </li>
+        ))}
+      </ul>
+      <div className="mt-auto pt-6">
+        <CtaLink to="/contact">Request quote</CtaLink>
+      </div>
+    </div>
+  );
+}
