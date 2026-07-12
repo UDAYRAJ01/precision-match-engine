@@ -13,6 +13,7 @@ import { Route as TechnologyRouteImport } from './routes/technology'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as PatentsRouteImport } from './routes/patents'
 import { Route as InvestorsRouteImport } from './routes/investors'
+import { Route as HowToUseRouteImport } from './routes/how-to-use'
 import { Route as HotelsRouteImport } from './routes/hotels'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -39,6 +40,11 @@ const PatentsRoute = PatentsRouteImport.update({
 const InvestorsRoute = InvestorsRouteImport.update({
   id: '/investors',
   path: '/investors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HowToUseRoute = HowToUseRouteImport.update({
+  id: '/how-to-use',
+  path: '/how-to-use',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HotelsRoute = HotelsRouteImport.update({
@@ -85,6 +91,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/hotels': typeof HotelsRoute
+  '/how-to-use': typeof HowToUseRoute
   '/investors': typeof InvestorsRoute
   '/patents': typeof PatentsRoute
   '/products': typeof ProductsRoute
@@ -98,6 +105,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/hotels': typeof HotelsRoute
+  '/how-to-use': typeof HowToUseRoute
   '/investors': typeof InvestorsRoute
   '/patents': typeof PatentsRoute
   '/products': typeof ProductsRoute
@@ -112,6 +120,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/hotels': typeof HotelsRoute
+  '/how-to-use': typeof HowToUseRoute
   '/investors': typeof InvestorsRoute
   '/patents': typeof PatentsRoute
   '/products': typeof ProductsRoute
@@ -127,6 +136,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/hotels'
+    | '/how-to-use'
     | '/investors'
     | '/patents'
     | '/products'
@@ -140,6 +150,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/hotels'
+    | '/how-to-use'
     | '/investors'
     | '/patents'
     | '/products'
@@ -153,6 +164,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/hotels'
+    | '/how-to-use'
     | '/investors'
     | '/patents'
     | '/products'
@@ -167,6 +179,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
   HotelsRoute: typeof HotelsRoute
+  HowToUseRoute: typeof HowToUseRoute
   InvestorsRoute: typeof InvestorsRoute
   PatentsRoute: typeof PatentsRoute
   ProductsRoute: typeof ProductsRoute
@@ -201,6 +214,13 @@ declare module '@tanstack/react-router' {
       path: '/investors'
       fullPath: '/investors'
       preLoaderRoute: typeof InvestorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/how-to-use': {
+      id: '/how-to-use'
+      path: '/how-to-use'
+      fullPath: '/how-to-use'
+      preLoaderRoute: typeof HowToUseRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/hotels': {
@@ -263,6 +283,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
   HotelsRoute: HotelsRoute,
+  HowToUseRoute: HowToUseRoute,
   InvestorsRoute: InvestorsRoute,
   PatentsRoute: PatentsRoute,
   ProductsRoute: ProductsRoute,
