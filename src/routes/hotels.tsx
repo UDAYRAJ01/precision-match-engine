@@ -15,6 +15,11 @@ import {
   Building2,
   ArrowDown,
   Award,
+  Cpu,
+  Activity,
+  BadgeCheck,
+  IndianRupee,
+  Scale,
 } from "lucide-react";
 import type { ReactNode } from "react";
 
