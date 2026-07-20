@@ -15,6 +15,7 @@ import "@fontsource-variable/space-grotesk";
 import "@fontsource-variable/dm-sans";
 import { SiteHeader } from "@/components/site/site-header";
 import { SiteFooter } from "@/components/site/site-footer";
+import { StickyCta } from "@/components/site/sticky-cta";
 import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
@@ -143,6 +144,7 @@ function RootComponent() {
         <Outlet />
       </main>
       <SiteFooter />
+      <StickyCta />
       <Toaster richColors position="top-center" />
     </QueryClientProvider>
   );
