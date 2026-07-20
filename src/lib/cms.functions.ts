@@ -4,6 +4,7 @@ import { z } from "zod";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import type { Database } from "@/integrations/supabase/types";
 
+export type SectionContent = Record<string, unknown>;
 export type PageSection = {
   id: string;
   page_slug: string;
@@ -11,7 +12,7 @@ export type PageSection = {
   section_type: string;
   sort_order: number;
   label: string | null;
-  content: Record<string, unknown> | unknown[];
+  content: SectionContent;
   published: boolean;
   updated_at: string;
 };
