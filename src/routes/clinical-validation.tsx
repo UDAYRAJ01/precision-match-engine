@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Section, SectionHeader } from "@/components/site/section";
 import { Check } from "lucide-react";
+import { PageBanner } from "@/components/site/page-banner";
+import bannerClinical from "@/assets/banner-clinical.jpg";
 
 export const Route = createFileRoute("/clinical-validation")({
   head: () => ({
@@ -17,19 +19,12 @@ export const Route = createFileRoute("/clinical-validation")({
 function ClinicalPage() {
   return (
     <>
-      <Section bordered={false}>
-        <div className="mx-auto max-w-3xl text-center">
-          <span className="eyebrow"><span className="pulse-dot" /> Evidence-based medicine</span>
-          <h1 className="mt-6 font-display text-4xl font-bold tracking-tight sm:text-5xl">
-            Clinical validation &{" "}
-            <span className="text-pulse">statistical research</span>
-          </h1>
-          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Groundbreaking statistical trials demonstrating significant ROSC survival improvements
-            through real-time multi-sensory feedback.
-          </p>
-        </div>
-      </Section>
+      <PageBanner
+        image={bannerClinical}
+        eyebrow="Evidence-based medicine"
+        title={<>Clinical validation & <span className="text-pulse">statistical research</span></>}
+        subtitle="Groundbreaking statistical trials demonstrating significant ROSC survival improvements through real-time multi-sensory feedback."
+      />
 
       <Section surface>
         <div className="grid gap-6 md:grid-cols-3">
