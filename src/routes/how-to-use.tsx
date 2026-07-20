@@ -4,12 +4,10 @@ import { CtaLink } from "@/components/site/cta";
 import { PageBanner } from "@/components/site/page-banner";
 import bannerHowto from "@/assets/banner-howto.jpg";
 import {
-  Phone,
   Power,
   Hand,
   HeartPulse,
   Volume2,
-  Activity,
   AlertCircle,
   CheckCircle,
   XCircle,
