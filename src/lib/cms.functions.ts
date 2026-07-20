@@ -73,6 +73,23 @@ export const checkIsAdmin = createServerFn({ method: "GET" })
     return { isAdmin: Boolean(data), userId: context.userId };
   });
 
+export const bootstrapFirstAdmin = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }) => {
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { count, error: cErr } = await supabaseAdmin
+      .from("user_roles")
+      .select("*", { count: "exact", head: true })
+      .eq("role", "admin");
+    if (cErr) throw cErr;
+    if ((count ?? 0) > 0) throw new Error("An admin already exists");
+    const { error } = await supabaseAdmin
+      .from("user_roles")
+      .insert({ user_id: context.userId, role: "admin" });
+    if (error) throw error;
+    return { ok: true };
+  });
+
 const upsertSchema = z.object({
   id: z.string().uuid().optional(),
   page_slug: z.string().min(1).max(80),
