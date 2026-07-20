@@ -1,8 +1,9 @@
 import { createFileRoute, Outlet, Link, useNavigate } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
-import { checkIsAdmin } from "@/lib/cms.functions";
+import { checkIsAdmin, bootstrapFirstAdmin } from "@/lib/cms.functions";
 import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   head: () => ({ meta: [{ title: "Admin | CPR PRAYAS™" }, { name: "robots", content: "noindex" }] }),
@@ -11,6 +12,7 @@ export const Route = createFileRoute("/_authenticated/admin")({
 
 function AdminLayout() {
   const check = useServerFn(checkIsAdmin);
+  const bootstrap = useServerFn(bootstrapFirstAdmin);
   const nav = useNavigate();
   const q = useQuery({ queryKey: ["isAdmin"], queryFn: () => check(), retry: false });
 
@@ -23,10 +25,22 @@ function AdminLayout() {
           Your account is signed in but doesn't have admin access. Contact the site owner to be added.
         </p>
         <p className="mt-2 text-xs text-muted-foreground">User ID: <code>{q.data?.userId}</code></p>
-        <button
-          onClick={async () => { await supabase.auth.signOut(); nav({ to: "/auth" }); }}
-          className="mt-4 rounded-full border border-border px-4 py-2 text-xs"
-        >Sign out</button>
+        <div className="mt-4 flex flex-wrap justify-center gap-2">
+          <button
+            onClick={async () => {
+              try { await bootstrap(); toast.success("You are now admin"); q.refetch(); }
+              catch (e) { toast.error(e instanceof Error ? e.message : "Failed"); }
+            }}
+            className="rounded-full bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground"
+          >Claim first admin</button>
+          <button
+            onClick={async () => { await supabase.auth.signOut(); nav({ to: "/auth" }); }}
+            className="rounded-full border border-border px-4 py-2 text-xs"
+          >Sign out</button>
+        </div>
+        <p className="mt-3 text-[10px] text-muted-foreground">
+          "Claim first admin" only works if no admin exists yet.
+        </p>
       </div>
     );
   }
