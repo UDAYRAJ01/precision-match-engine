@@ -2,13 +2,21 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { Home, Package, BookOpen, Building2, PhoneCall } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const TABS = [
+type Tab = {
+  to: "/" | "/products" | "/how-to-use" | "/hotels" | "/contact";
+  label: string;
+  icon: typeof Home;
+  exact?: boolean;
+  primary?: boolean;
+};
+
+const TABS: Tab[] = [
   { to: "/", label: "Home", icon: Home, exact: true },
   { to: "/products", label: "Products", icon: Package },
   { to: "/how-to-use", label: "How to", icon: BookOpen },
   { to: "/hotels", label: "Hotels", icon: Building2 },
   { to: "/contact", label: "Demo", icon: PhoneCall, primary: true },
-] as const;
+];
 
 export function StickyCta() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
