@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Section, SectionHeader } from "@/components/site/section";
 import { Check } from "lucide-react";
-import { PageBanner } from "@/components/site/page-banner";
+import { CmsPageBanner } from "@/components/site/cms-page-banner";
 import bannerClinical from "@/assets/banner-clinical.jpg";
 import sectionTrial from "@/assets/section-clinical-trial.jpg";
 
