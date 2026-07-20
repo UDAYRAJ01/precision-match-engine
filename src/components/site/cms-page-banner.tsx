@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { PageBanner } from "@/components/site/page-banner";
 import { useCmsContent } from "@/hooks/use-cms";
 
@@ -6,29 +7,29 @@ type Props = {
   sectionKey?: string;
   image: string;
   eyebrow?: string;
-  title: string;
-  subtitle?: string;
+  title: ReactNode;
+  subtitle?: ReactNode;
   align?: "left" | "center";
 };
 
 /**
- * Hero banner driven by CMS. Falls back to props (existing hardcoded copy)
- * whenever the section or a specific field is missing/blank.
+ * Hero banner driven by CMS. Any field the admin leaves blank falls back
+ * to the hardcoded default passed by the route (existing copy).
  */
 export function CmsPageBanner(props: Props) {
   const { get } = useCmsContent(props.page);
   const data = get(props.sectionKey ?? "hero", {
     image: props.image,
     eyebrow: props.eyebrow ?? "",
-    title: props.title,
-    subtitle: props.subtitle ?? "",
+    title: "",
+    subtitle: "",
   });
   return (
     <PageBanner
       image={data.image}
       eyebrow={data.eyebrow || undefined}
-      title={data.title}
-      subtitle={data.subtitle || undefined}
+      title={data.title ? data.title : props.title}
+      subtitle={data.subtitle ? data.subtitle : props.subtitle}
       align={props.align}
     />
   );
