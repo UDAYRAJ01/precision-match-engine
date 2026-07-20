@@ -4,7 +4,8 @@ import { z } from "zod";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import type { Database } from "@/integrations/supabase/types";
 
-export type SectionContent = Record<string, unknown>;
+export type JsonValue = string | number | boolean | null | JsonValue[] | { [k: string]: JsonValue };
+export type SectionContent = { [k: string]: JsonValue } | JsonValue[];
 export type PageSection = {
   id: string;
   page_slug: string;
