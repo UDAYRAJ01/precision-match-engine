@@ -4,12 +4,10 @@ import { CtaLink } from "@/components/site/cta";
 import { PageBanner } from "@/components/site/page-banner";
 import bannerHowto from "@/assets/banner-howto.jpg";
 import {
-  Phone,
   Power,
   Hand,
   HeartPulse,
   Volume2,
-  Activity,
   AlertCircle,
   CheckCircle,
   XCircle,
@@ -52,48 +50,65 @@ function HowToUsePage() {
       {/* STEP-BY-STEP */}
       <SectionBlock
         n="01"
-        eyebrow="Emergency protocol"
-        title="Follow these steps"
-        subtitle="Designed for both trained responders and first-time bystanders."
+        eyebrow="Quick start · 5 steps"
+        title="From panic to protocol in under 30 seconds"
+        subtitle="A memorable flow anyone can follow — no training required. Each step takes seconds; PRAYAS coaches the rest."
         surface
       >
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           <StepCard
             step="1"
             icon={<Shield className="h-5 w-5" />}
-            title="Ensure safety"
-            body="Check the scene for hazards. Make sure the person, you, and bystanders are safe before approaching."
+            title="Check & call"
+            time="~5 sec"
+            body="Tap the shoulders and shout. No response or only gasping? Dial your local emergency number on speaker."
+            tip="Gasping is not breathing — start CPR immediately."
           />
           <StepCard
             step="2"
-            icon={<Activity className="h-5 w-5" />}
-            title="Check responsiveness"
-            body="Tap the person's shoulders firmly and shout. Look for normal breathing — gasping is not normal breathing."
+            icon={<Hand className="h-5 w-5" />}
+            title="Place PRAYAS"
+            time="~5 sec"
+            body="Expose the chest. Set the device flat on the lower half of the sternum, centered between the nipples — the grip contour shows correct orientation."
+            tip="Firm, flat surface only — never on a mattress alone."
           />
           <StepCard
             step="3"
-            icon={<Phone className="h-5 w-5" />}
-            title="Call for help"
-            body="Dial your local emergency number. Put the call on speaker so the dispatcher can guide you while PRAYAS handles compressions."
+            icon={<Power className="h-5 w-5" />}
+            title="Press power"
+            time="1 sec"
+            body="One press wakes the device. You'll hear a ready tone and a 3-2-1 countdown before the metronome starts."
+            tip="Green LED = ready. Wait for the tone before compressing."
           />
           <StepCard
             step="4"
-            icon={<Hand className="h-5 w-5" />}
-            title="Position the device"
-            body="Place PRAYAS on the lower half of the sternum, in line with the nipples. The hand-grip contour shows the correct orientation."
+            icon={<HeartPulse className="h-5 w-5" />}
+            title="Push with your body"
+            time="continuous"
+            body="Lock elbows, stack shoulders over hands, push to the beat. Aim 5–6 cm deep at 100–120/min — PRAYAS alerts you if you drift."
+            tip="Let the chest fully recoil between pushes."
           />
           <StepCard
             step="5"
-            icon={<Power className="h-5 w-5" />}
-            title="Power on & follow voice"
-            body="Press the power button once. PRAYAS begins counting down and coaching compression depth, rate, and recoil."
+            icon={<Volume2 className="h-5 w-5" />}
+            title="Follow the feedback"
+            time="until help arrives"
+            body="Listen to voice cues and watch the LED ring. Green = perfect, amber = adjust, red = stop. Swap rescuers every 2 minutes if possible."
+            tip="Never stop unless the AED or a responder tells you to."
           />
-          <StepCard
-            step="6"
-            icon={<HeartPulse className="h-5 w-5" />}
-            title="Compress until help arrives"
-            body="Push hard and fast (5–6 cm deep, 100–120 per minute). Swap rescuers every 2 minutes if another person is available."
-          />
+          <div className="card-surface flex h-full flex-col justify-between rounded-3xl border-pulse/40 bg-pulse/5 p-7">
+            <div>
+              <span className="eyebrow-emerald">Remember</span>
+              <h3 className="mt-4 font-display text-xl font-semibold">
+                Any CPR is better than no CPR.
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                PRAYAS is built so an untrained bystander can act in the first
+                minute — the window that decides survival.
+              </p>
+            </div>
+            <CtaLink to="/contact" className="mt-6 self-start">Book a live demo</CtaLink>
+          </div>
         </div>
       </SectionBlock>
 
@@ -339,11 +354,15 @@ function StepCard({
   icon,
   title,
   body,
+  time,
+  tip,
 }: {
   step: string;
   icon: ReactNode;
   title: string;
   body: string;
+  time?: string;
+  tip?: string;
 }) {
   return (
     <div className="card-surface flex h-full flex-col p-7">
@@ -353,11 +372,25 @@ function StepCard({
           {icon}
         </div>
       </div>
-      <h3 className="mt-4 font-display text-xl font-semibold">{title}</h3>
-      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{body}</p>
-      <div className="mt-auto pt-5">
-        <ArrowRight className="h-5 w-5 text-muted-foreground/50" />
+      <div className="mt-4 flex items-center gap-2">
+        <h3 className="font-display text-xl font-semibold">{title}</h3>
+        {time && (
+          <span className="rounded-full bg-secondary px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+            {time}
+          </span>
+        )}
       </div>
+      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{body}</p>
+      {tip ? (
+        <div className="mt-auto flex items-start gap-2 rounded-xl border border-border/60 bg-secondary/40 p-3 pt-3">
+          <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-emerald" />
+          <p className="text-xs leading-relaxed text-muted-foreground">{tip}</p>
+        </div>
+      ) : (
+        <div className="mt-auto pt-5">
+          <ArrowRight className="h-5 w-5 text-muted-foreground/50" />
+        </div>
+      )}
     </div>
   );
 }
