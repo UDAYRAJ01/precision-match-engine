@@ -140,7 +140,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <SiteHeader />
-      <main>
+      <main className="pb-20">
         <Outlet />
       </main>
       <SiteFooter />
