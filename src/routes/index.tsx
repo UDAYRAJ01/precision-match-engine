@@ -54,8 +54,8 @@ function Index() {
           professional responders. CPR PRAYAS™ bridges the gap between effort and outcomes.
         </p>
         <div className="mt-8 flex w-full flex-col gap-3 sm:mt-10 sm:w-auto sm:flex-row sm:gap-4">
-          <CtaLink to="/contact" className="justify-center shadow-[0_0_28px_color-mix(in_oklch,var(--pulse)_35%,transparent)]">
-            Request demo <ArrowRight className="h-4 w-4" />
+          <CtaLink to="/how-to-use" className="justify-center shadow-[0_0_28px_color-mix(in_oklch,var(--pulse)_35%,transparent)]">
+            How to use <ArrowRight className="h-4 w-4" />
           </CtaLink>
           <CtaLink to="/products" variant="outline" className="justify-center">View products</CtaLink>
         </div>
