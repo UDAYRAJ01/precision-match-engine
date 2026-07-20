@@ -27,6 +27,8 @@ export function useCmsContent(page: string) {
     for (const k of Object.keys(defaults)) {
       const v = c[k];
       if (typeof v === "string" && v.trim() === "") continue;
+      // Sentinel: seeded default paths like /src/assets/... mean "use imported default"
+      if (typeof v === "string" && v.startsWith("/src/")) continue;
       if (v !== undefined && v !== null) merged[k] = v;
     }
     return merged as T;
