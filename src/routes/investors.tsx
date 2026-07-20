@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Section, SectionHeader } from "@/components/site/section";
 import { CtaLink } from "@/components/site/cta";
+import { PageBanner } from "@/components/site/page-banner";
+import bannerInvestors from "@/assets/banner-investors.jpg";
 
 export const Route = createFileRoute("/investors")({
   head: () => ({
@@ -36,19 +38,12 @@ const ALLOC = [
 function InvestorsPage() {
   return (
     <>
-      <Section bordered={false}>
-        <div className="mx-auto max-w-3xl text-center">
-          <span className="eyebrow"><span className="pulse-dot" /> Capital & growth portal</span>
-          <h1 className="mt-6 font-display text-4xl font-bold tracking-tight sm:text-5xl">
-            Disrupting the $4.8B global{" "}
-            <span className="text-pulse">resuscitation MedTech market</span>
-          </h1>
-          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Partner with CPR PRAYAS™ in bringing scalable, high-margin resuscitation guidance
-            technology to worldwide markets.
-          </p>
-        </div>
-      </Section>
+      <PageBanner
+        image={bannerInvestors}
+        eyebrow="Capital & growth portal"
+        title={<>Disrupting the $4.8B global <span className="text-pulse">resuscitation MedTech market</span></>}
+        subtitle="Partner with CPR PRAYAS™ in bringing scalable, high-margin resuscitation guidance technology to worldwide markets."
+      />
 
       <Section surface>
         <div className="grid gap-6 md:grid-cols-3">
