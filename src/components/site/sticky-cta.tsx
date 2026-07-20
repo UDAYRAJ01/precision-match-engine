@@ -1,9 +1,9 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Home, Package, BookOpen, Building2, PhoneCall } from "lucide-react";
+import { Home, Package, Building2, PhoneCall, BookOpen } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Tab = {
-  to: "/" | "/products" | "/how-to-use" | "/hotels" | "/contact";
+  to: "/" | "/products" | "/hotels" | "/contact" | "/how-to-use";
   label: string;
   icon: typeof Home;
   exact?: boolean;
@@ -13,9 +13,9 @@ type Tab = {
 const TABS: Tab[] = [
   { to: "/", label: "Home", icon: Home, exact: true },
   { to: "/products", label: "Products", icon: Package },
-  { to: "/how-to-use", label: "How to", icon: BookOpen },
   { to: "/hotels", label: "Hotels", icon: Building2 },
-  { to: "/contact", label: "Demo", icon: PhoneCall, primary: true },
+  { to: "/contact", label: "Demo", icon: PhoneCall },
+  { to: "/how-to-use", label: "How to Use", icon: BookOpen, primary: true },
 ];
 
 export function StickyCta() {
