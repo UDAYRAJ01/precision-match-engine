@@ -5,7 +5,7 @@ import { useMemo, useState } from "react";
 import { toast } from "sonner";
 import { listAllSections, upsertSection, deleteSection, type PageSection } from "@/lib/cms.functions";
 
-export const Route = createFileRoute("/_authenticated/admin/$page")({
+export const Route = createFileRoute("/admin/$page")({
   component: PageEditor,
 });
 

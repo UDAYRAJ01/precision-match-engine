@@ -18,7 +18,7 @@ const KNOWN_PAGES = [
   { slug: "contact", label: "Contact" },
 ];
 
-export const Route = createFileRoute("/_authenticated/admin/")({
+export const Route = createFileRoute("/admin/")({
   component: AdminDashboard,
 });
 
