@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Section, SectionHeader, DeviceMock } from "@/components/site/section";
 import { CtaLink } from "@/components/site/cta";
+import { PageBanner } from "@/components/site/page-banner";
+import bannerAbout from "@/assets/banner-about.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -17,19 +19,12 @@ export const Route = createFileRoute("/about")({
 function AboutPage() {
   return (
     <>
-      <Section bordered={false}>
-        <div className="mx-auto max-w-3xl text-center">
-          <span className="eyebrow"><span className="pulse-dot" /> Corporate profile & mission</span>
-          <h1 className="mt-6 font-display text-4xl font-bold tracking-tight sm:text-5xl">
-            Engineered to give every heart <span className="text-pulse">a second chance at life.</span>
-          </h1>
-          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            CPR PRAYAS™ is an Indian MedTech company developing intelligent CPR guidance
-            technologies that empower anyone — from trained healthcare professionals to
-            everyday bystanders — to save lives during cardiac emergencies.
-          </p>
-        </div>
-      </Section>
+      <PageBanner
+        image={bannerAbout}
+        eyebrow="Corporate profile & mission"
+        title={<>Engineered to give every heart <span className="text-pulse">a second chance at life.</span></>}
+        subtitle="CPR PRAYAS™ is an Indian MedTech company developing intelligent CPR guidance technologies that empower anyone — from trained healthcare professionals to everyday bystanders — to save lives during cardiac emergencies."
+      />
 
       <Section surface>
         <div className="grid items-center gap-14 lg:grid-cols-2">
