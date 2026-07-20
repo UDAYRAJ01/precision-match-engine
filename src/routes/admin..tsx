@@ -9,7 +9,7 @@ import {
 } from "@/lib/cms.functions";
 import { uploadCmsImage } from "@/lib/cms-upload.functions";
 
-export const Route = createFileRoute("/admin/$page")({
+export const Route = createFileRoute("/admin/")({
   component: PageEditor,
 });
 
