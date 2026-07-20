@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Section, SectionHeader } from "@/components/site/section";
 import { CtaLink } from "@/components/site/cta";
+import { PageBanner } from "@/components/site/page-banner";
+import bannerHotels from "@/assets/banner-hotels.jpg";
 import {
   Check,
   AlertTriangle,
@@ -36,22 +38,15 @@ export const Route = createFileRoute("/hotels")({
 function HotelsPage() {
   return (
     <>
-      {/* COVER */}
+      <PageBanner
+        image={bannerHotels}
+        eyebrow="Hospitality safety"
+        title={<>Revolutionizing emergency response <span className="text-pulse">in hotels</span></>}
+        subtitle="A professional PRAYAS pitch for guest and staff safety — helping hotels respond confidently during the first critical minutes of a medical emergency through guided CPR support."
+      />
       <Section bordered={false}>
-        <div className="mx-auto max-w-3xl text-center">
-          <span className="eyebrow"><span className="pulse-dot" /> Hospitality safety</span>
-          <h1 className="mt-6 font-display text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-            Revolutionizing emergency response{" "}
-            <span className="text-pulse">in hotels</span>
-          </h1>
-          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            A professional PRAYAS pitch deck for guest and staff safety — helping
-            hotels respond confidently during the first critical minutes of a
-            medical emergency through guided CPR support.
-          </p>
-          <div className="mt-8 flex justify-center gap-3">
-            <CtaLink to="/contact">Request hotel demo</CtaLink>
-          </div>
+        <div className="flex justify-center">
+          <CtaLink to="/contact">Request hotel demo</CtaLink>
         </div>
       </Section>
 
