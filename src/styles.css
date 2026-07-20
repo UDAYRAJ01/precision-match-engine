@@ -183,13 +183,82 @@
   width: 100%;
   max-width: 1200px;
   margin-inline: auto;
-  padding-inline: 1rem;
+  padding-inline: 1.15rem;
 }
 
 @media (min-width: 640px) {
   .container-page {
     padding-inline: 1.5rem;
   }
+}
+
+/* App-like card for mobile-first surfaces */
+@utility app-card {
+  position: relative;
+  border-radius: 1.5rem;
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklch, var(--surface-elevated) 85%, transparent) 0%,
+    color-mix(in oklch, var(--surface) 65%, transparent) 100%
+  );
+  border: 1px solid color-mix(in oklch, white 8%, transparent);
+  box-shadow:
+    0 1px 0 color-mix(in oklch, white 6%, transparent) inset,
+    0 12px 30px -18px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+}
+
+@utility app-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: color-mix(in oklch, var(--pulse) 12%, transparent);
+  color: var(--pulse);
+  border: 1px solid color-mix(in oklch, var(--pulse) 22%, transparent);
+}
+
+/* Fluid typography — feels tight and app-native on phones,
+   scales up cleanly on tablet / desktop. */
+@utility h-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  font-size: clamp(2.2rem, 8.5vw, 4.75rem);
+}
+
+@utility h-section {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  font-size: clamp(1.75rem, 5.5vw, 3rem);
+}
+
+@utility h-card {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  font-size: clamp(1.05rem, 3.2vw, 1.25rem);
+}
+
+@utility text-lede {
+  font-size: clamp(0.98rem, 2.4vw, 1.15rem);
+  line-height: 1.6;
+  color: var(--muted-foreground);
+}
+
+/* Mobile app polish — tighter vertical rhythm on small screens */
+@media (max-width: 640px) {
+  html { -webkit-tap-highlight-color: transparent; }
+  body { font-size: 0.97rem; }
 }
 
 /* Eyebrow tag / badge */
