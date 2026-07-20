@@ -9,7 +9,6 @@ import {
   AlertTriangle,
   Timer,
   TrendingDown,
-  Users,
   Gauge,
   Volume2,
   BatteryCharging,
