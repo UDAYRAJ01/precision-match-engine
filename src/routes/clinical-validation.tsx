@@ -3,6 +3,7 @@ import { Section, SectionHeader } from "@/components/site/section";
 import { Check } from "lucide-react";
 import { PageBanner } from "@/components/site/page-banner";
 import bannerClinical from "@/assets/banner-clinical.jpg";
+import sectionTrial from "@/assets/section-clinical-trial.jpg";
 
 export const Route = createFileRoute("/clinical-validation")({
   head: () => ({
@@ -43,6 +44,16 @@ function ClinicalPage() {
 
         <div className="mt-10 card-surface p-8">
           <h3 className="font-display text-xl font-semibold">Biomechanical simulation trial methodology</h3>
+          <div className="mt-6 overflow-hidden rounded-xl border border-border">
+            <img
+              src={sectionTrial}
+              alt="Clinical simulation lab with CPR manikin, PRAYAS device, and researchers monitoring waveforms"
+              width={1600}
+              height={1000}
+              loading="lazy"
+              className="w-full"
+            />
+          </div>
           <p className="mt-3 leading-relaxed text-muted-foreground">
             Comparative controlled trials evaluated 150 rescuers (50 clinical nurses, 50 first
             responders, 50 untrained bystanders) performing 10-minute continuous resuscitation

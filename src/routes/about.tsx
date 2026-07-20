@@ -1,8 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Section, SectionHeader, DeviceMock } from "@/components/site/section";
+import { Section, SectionHeader } from "@/components/site/section";
 import { CtaLink } from "@/components/site/cta";
 import { PageBanner } from "@/components/site/page-banner";
 import bannerAbout from "@/assets/banner-about.jpg";
+import sectionTeam from "@/assets/section-about-team.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -42,8 +43,15 @@ function AboutPage() {
               elevate bystander action into effective resuscitation.
             </p>
           </div>
-          <div className="mx-auto w-full max-w-sm">
-            <DeviceMock tone="ink" />
+          <div className="overflow-hidden rounded-2xl border border-border shadow-2xl">
+            <img
+              src={sectionTeam}
+              alt="CPR PRAYAS engineers and clinicians collaborating in a MedTech R&D lab"
+              width={1600}
+              height={1000}
+              loading="lazy"
+              className="w-full"
+            />
           </div>
         </div>
       </Section>

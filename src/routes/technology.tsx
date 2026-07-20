@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Section, SectionHeader } from "@/components/site/section";
 import { PageBanner } from "@/components/site/page-banner";
 import bannerTech from "@/assets/banner-technology.jpg";
+import sectionSensors from "@/assets/section-tech-sensors.jpg";
 
 export const Route = createFileRoute("/technology")({
   head: () => ({
@@ -47,6 +48,16 @@ function TechPage() {
 
       <Section surface>
         <SectionHeader eyebrow="Sensor fusion" title="The 4-layer sensing pipeline" subtitle="Isolating true sternal displacement from soft mattress sag." />
+        <div className="mt-10 overflow-hidden rounded-2xl border border-border shadow-2xl">
+          <img
+            src={sectionSensors}
+            alt="Macro view of PRAYAS sensor board with piezo-resistive force sensors and ARM Cortex processor"
+            width={1600}
+            height={1000}
+            loading="lazy"
+            className="w-full"
+          />
+        </div>
         <div className="mt-14 grid gap-6 md:grid-cols-2">
           {LAYERS.map(([n, t, d]) => (
             <div key={n} className="card-surface p-8">
