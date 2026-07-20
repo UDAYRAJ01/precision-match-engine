@@ -2,8 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Section } from "@/components/site/section";
 import { CtaLink } from "@/components/site/cta";
 import { Check } from "lucide-react";
-import productOne from "@/assets/product-one.jpg";
-import productPro from "@/assets/product-pro.jpg";
+import productOne from "@/assets/prayas-device-front.png";
+import productPro from "@/assets/prayas-device-side.png";
 import productConnect from "@/assets/product-connect.jpg";
 
 export const Route = createFileRoute("/products")({
