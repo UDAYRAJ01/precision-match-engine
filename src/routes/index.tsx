@@ -45,12 +45,12 @@ function Index() {
     <div className="container-page space-y-16 py-10 sm:space-y-20 sm:py-16 md:space-y-24 md:py-24">
       {/* Hero */}
       <section className="relative flex flex-col items-center text-center">
-        <span className="app-chip">
+        <span className="app-chip order-1">
           <span className="pulse-dot" />
           {hero.eyebrow}
         </span>
 
-        <h1 className="h-display mt-6 sm:mt-8">
+        <h1 className="h-display order-3 mt-6 sm:order-2 sm:mt-8">
           {hero.title ? (
             <span className="bg-gradient-to-r from-emerald to-pulse bg-clip-text text-transparent">
               {hero.title}
@@ -65,16 +65,16 @@ function Index() {
             </>
           )}
         </h1>
-        <p className="text-lede mt-6 max-w-2xl sm:mt-8">
+        <p className="text-lede order-4 mt-6 max-w-2xl sm:order-3 sm:mt-8">
           {hero.subtitle}
         </p>
-        <div className="mt-8 flex w-full flex-col gap-3 sm:mt-10 sm:w-auto sm:flex-row sm:gap-4">
+        <div className="order-5 mt-8 flex w-full flex-col gap-3 sm:order-4 sm:mt-10 sm:w-auto sm:flex-row sm:gap-4">
           <CtaLink to="/how-to-use" className="justify-center shadow-[0_0_28px_color-mix(in_oklch,var(--pulse)_35%,transparent)]">
             How to use <ArrowRight className="h-4 w-4" />
           </CtaLink>
           <CtaLink to="/products" variant="outline" className="justify-center">View products</CtaLink>
         </div>
-        <div className="relative mt-10 w-full max-w-5xl sm:mt-16">
+        <div className="relative order-2 mt-6 w-full max-w-5xl sm:order-5 sm:mt-16">
           <div className="pointer-events-none absolute -inset-6 rounded-[3rem] bg-gradient-to-br from-pulse/20 via-transparent to-emerald/20 blur-3xl sm:-inset-8" />
           <img
             src={hero.image}
