@@ -24,6 +24,7 @@ import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminPageRouteImport } from './routes/admin.$page'
 import { Route as ApiPublicCmsImageSplatRouteImport } from './routes/api/public/cms-image.$'
 
 const TechnologyRoute = TechnologyRouteImport.update({
@@ -101,6 +102,11 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminPageRoute = AdminPageRouteImport.update({
+  id: '/$page',
+  path: '/$page',
+  getParentRoute: () => AdminRoute,
+} as any)
 const ApiPublicCmsImageSplatRoute = ApiPublicCmsImageSplatRouteImport.update({
   id: '/api/public/cms-image/$',
   path: '/api/public/cms-image/$',
@@ -122,6 +128,7 @@ export interface FileRoutesByFullPath {
   '/patents': typeof PatentsRoute
   '/products': typeof ProductsRoute
   '/technology': typeof TechnologyRoute
+  '/admin/$page': typeof AdminPageRoute
   '/admin/': typeof AdminIndexRoute
   '/api/public/cms-image/$': typeof ApiPublicCmsImageSplatRoute
 }
@@ -139,6 +146,7 @@ export interface FileRoutesByTo {
   '/patents': typeof PatentsRoute
   '/products': typeof ProductsRoute
   '/technology': typeof TechnologyRoute
+  '/admin/$page': typeof AdminPageRoute
   '/admin': typeof AdminIndexRoute
   '/api/public/cms-image/$': typeof ApiPublicCmsImageSplatRoute
 }
@@ -158,6 +166,7 @@ export interface FileRoutesById {
   '/patents': typeof PatentsRoute
   '/products': typeof ProductsRoute
   '/technology': typeof TechnologyRoute
+  '/admin/$page': typeof AdminPageRoute
   '/admin/': typeof AdminIndexRoute
   '/api/public/cms-image/$': typeof ApiPublicCmsImageSplatRoute
 }
@@ -178,6 +187,7 @@ export interface FileRouteTypes {
     | '/patents'
     | '/products'
     | '/technology'
+    | '/admin/$page'
     | '/admin/'
     | '/api/public/cms-image/$'
   fileRoutesByTo: FileRoutesByTo
@@ -195,6 +205,7 @@ export interface FileRouteTypes {
     | '/patents'
     | '/products'
     | '/technology'
+    | '/admin/$page'
     | '/admin'
     | '/api/public/cms-image/$'
   id:
@@ -213,6 +224,7 @@ export interface FileRouteTypes {
     | '/patents'
     | '/products'
     | '/technology'
+    | '/admin/$page'
     | '/admin/'
     | '/api/public/cms-image/$'
   fileRoutesById: FileRoutesById
@@ -342,6 +354,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/$page': {
+      id: '/admin/$page'
+      path: '/$page'
+      fullPath: '/admin/$page'
+      preLoaderRoute: typeof AdminPageRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/api/public/cms-image/$': {
       id: '/api/public/cms-image/$'
       path: '/api/public/cms-image/$'
@@ -353,10 +372,12 @@ declare module '@tanstack/react-router' {
 }
 
 interface AdminRouteChildren {
+  AdminPageRoute: typeof AdminPageRoute
   AdminIndexRoute: typeof AdminIndexRoute
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
+  AdminPageRoute: AdminPageRoute,
   AdminIndexRoute: AdminIndexRoute,
 }
 
