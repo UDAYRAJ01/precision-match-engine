@@ -20,7 +20,7 @@ export const Route = createFileRoute("/clinical-validation")({
 function ClinicalPage() {
   return (
     <>
-      <PageBanner
+      <CmsPageBanner page="clinical-validation"
         image={bannerClinical}
         eyebrow="Evidence-based medicine"
         title={<>Clinical validation & <span className="text-pulse">statistical research</span></>}

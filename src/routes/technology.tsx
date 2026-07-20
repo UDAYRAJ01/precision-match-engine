@@ -39,7 +39,7 @@ const SPECS: [string, string, string][] = [
 function TechPage() {
   return (
     <>
-      <PageBanner
+      <CmsPageBanner page="technology"
         image={bannerTech}
         eyebrow="Biomechanical engineering"
         title={<>Precision sensor architecture & <span className="text-pulse">real-time algorithmic intelligence</span></>}

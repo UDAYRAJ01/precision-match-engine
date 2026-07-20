@@ -39,7 +39,7 @@ const ALLOC = [
 function InvestorsPage() {
   return (
     <>
-      <PageBanner
+      <CmsPageBanner page="investors"
         image={bannerInvestors}
         eyebrow="Capital & growth portal"
         title={<>Disrupting the $4.8B global <span className="text-pulse">resuscitation MedTech market</span></>}

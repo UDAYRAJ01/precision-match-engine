@@ -38,7 +38,7 @@ export const Route = createFileRoute("/hotels")({
 function HotelsPage() {
   return (
     <>
-      <PageBanner
+      <CmsPageBanner page="hotels"
         image={bannerHotels}
         eyebrow="Hospitality safety"
         title={<>Revolutionizing emergency response <span className="text-pulse">in hotels</span></>}

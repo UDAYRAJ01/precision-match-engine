@@ -25,7 +25,7 @@ const CLAIMS = [
 function PatentsPage() {
   return (
     <>
-      <PageBanner
+      <CmsPageBanner page="patents"
         image={bannerPatents}
         eyebrow="MedTech IP portfolio"
         title={<>Proprietary patent architecture & <span className="text-pulse">global IP protection roadmap</span></>}

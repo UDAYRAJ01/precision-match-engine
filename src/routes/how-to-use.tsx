@@ -34,7 +34,7 @@ export const Route = createFileRoute("/how-to-use")({
 function HowToUsePage() {
   return (
     <>
-      <PageBanner
+      <CmsPageBanner page="how-to-use"
         image={bannerHowto}
         eyebrow="Quick-start guide"
         title={<>How to use <span className="text-pulse">CPR PRAYAS™</span></>}

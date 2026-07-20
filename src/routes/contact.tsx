@@ -20,7 +20,7 @@ export const Route = createFileRoute("/contact")({
 function ContactPage() {
   return (
     <>
-      <PageBanner
+      <CmsPageBanner page="contact"
         image={bannerContact}
         eyebrow="Partner with us"
         title={<>Request a live institutional demo & <span className="text-pulse">RFP procurement quotation</span></>}

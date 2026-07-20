@@ -73,7 +73,7 @@ const CATEGORIES: { n: string; title: string; items: [string, string][] }[] = [
 function FaqPage() {
   return (
     <>
-      <PageBanner
+      <CmsPageBanner page="faq"
         image={bannerFaq}
         eyebrow="Knowledge base & support"
         title={<>Answers on device mechanics, <span className="text-pulse">clinical operation & deployment</span></>}

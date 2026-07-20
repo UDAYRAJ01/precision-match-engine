@@ -20,7 +20,7 @@ export const Route = createFileRoute("/about")({
 function AboutPage() {
   return (
     <>
-      <PageBanner
+      <CmsPageBanner page="about"
         image={bannerAbout}
         eyebrow="Corporate profile & mission"
         title={<>Engineered to give every heart <span className="text-pulse">a second chance at life.</span></>}
