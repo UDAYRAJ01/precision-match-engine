@@ -356,11 +356,15 @@ function StepCard({
   icon,
   title,
   body,
+  time,
+  tip,
 }: {
   step: string;
   icon: ReactNode;
   title: string;
   body: string;
+  time?: string;
+  tip?: string;
 }) {
   return (
     <div className="card-surface flex h-full flex-col p-7">
@@ -370,11 +374,25 @@ function StepCard({
           {icon}
         </div>
       </div>
-      <h3 className="mt-4 font-display text-xl font-semibold">{title}</h3>
-      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{body}</p>
-      <div className="mt-auto pt-5">
-        <ArrowRight className="h-5 w-5 text-muted-foreground/50" />
+      <div className="mt-4 flex items-center gap-2">
+        <h3 className="font-display text-xl font-semibold">{title}</h3>
+        {time && (
+          <span className="rounded-full bg-secondary px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+            {time}
+          </span>
+        )}
       </div>
+      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{body}</p>
+      {tip ? (
+        <div className="mt-auto flex items-start gap-2 rounded-xl border border-border/60 bg-secondary/40 p-3 pt-3">
+          <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-emerald" />
+          <p className="text-xs leading-relaxed text-muted-foreground">{tip}</p>
+        </div>
+      ) : (
+        <div className="mt-auto pt-5">
+          <ArrowRight className="h-5 w-5 text-muted-foreground/50" />
+        </div>
+      )}
     </div>
   );
 }
