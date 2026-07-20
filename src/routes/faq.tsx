@@ -6,6 +6,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { PageBanner } from "@/components/site/page-banner";
+import bannerFaq from "@/assets/banner-faq.jpg";
 
 export const Route = createFileRoute("/faq")({
   head: () => ({
@@ -71,15 +73,12 @@ const CATEGORIES: { n: string; title: string; items: [string, string][] }[] = [
 function FaqPage() {
   return (
     <>
-      <Section bordered={false}>
-        <div className="mx-auto max-w-3xl text-center">
-          <span className="eyebrow"><span className="pulse-dot" /> Knowledge base & support</span>
-          <h1 className="mt-6 font-display text-4xl font-bold tracking-tight sm:text-5xl">
-            Answers on device mechanics,{" "}
-            <span className="text-pulse">clinical operation & deployment</span>
-          </h1>
-        </div>
-      </Section>
+      <PageBanner
+        image={bannerFaq}
+        eyebrow="Knowledge base & support"
+        title={<>Answers on device mechanics, <span className="text-pulse">clinical operation & deployment</span></>}
+        subtitle="Everything about device mechanics, AHA compliance, battery maintenance, and institutional deployment."
+      />
 
       <Section surface>
         <div className="mx-auto max-w-3xl space-y-14">
