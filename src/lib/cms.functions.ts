@@ -1,7 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { createClient } from "@supabase/supabase-js";
 import { z } from "zod";
-import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import type { Database } from "@/integrations/supabase/types";
 
 export type JsonValue = string | number | boolean | null | JsonValue[] | { [k: string]: JsonValue };
@@ -49,52 +48,15 @@ export const listPageSections = createServerFn({ method: "GET" })
   });
 
 export const listAllSections = createServerFn({ method: "GET" })
-  .middleware([requireSupabaseAuth])
-  .handler(async ({ context }) => {
-    const { data: role, error: roleError } = await context.supabase
-      .from("user_roles")
-      .select("id")
-      .eq("user_id", context.userId)
-      .eq("role", "admin")
-      .maybeSingle();
-    if (roleError || !role) throw new Error("Forbidden");
-    const { data, error } = await context.supabase
+  .handler(async () => {
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { data, error } = await supabaseAdmin
       .from("page_sections")
       .select("*")
       .order("page_slug", { ascending: true })
       .order("sort_order", { ascending: true });
     if (error) throw error;
     return (data ?? []) as unknown as PageSection[];
-  });
-
-export const checkIsAdmin = createServerFn({ method: "GET" })
-  .middleware([requireSupabaseAuth])
-  .handler(async ({ context }) => {
-    const { data, error } = await context.supabase
-      .from("user_roles")
-      .select("id")
-      .eq("user_id", context.userId)
-      .eq("role", "admin")
-      .maybeSingle();
-    if (error) return { isAdmin: false, userId: context.userId };
-    return { isAdmin: Boolean(data), userId: context.userId };
-  });
-
-export const bootstrapFirstAdmin = createServerFn({ method: "POST" })
-  .middleware([requireSupabaseAuth])
-  .handler(async ({ context }) => {
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    const { count, error: cErr } = await supabaseAdmin
-      .from("user_roles")
-      .select("*", { count: "exact", head: true })
-      .eq("role", "admin");
-    if (cErr) throw cErr;
-    if ((count ?? 0) > 0) throw new Error("An admin already exists");
-    const { error } = await supabaseAdmin
-      .from("user_roles")
-      .insert({ user_id: context.userId, role: "admin" });
-    if (error) throw error;
-    return { ok: true };
   });
 
 const upsertSchema = z.object({
@@ -109,17 +71,9 @@ const upsertSchema = z.object({
 });
 
 export const upsertSection = createServerFn({ method: "POST" })
-  .middleware([requireSupabaseAuth])
   .inputValidator((input) => upsertSchema.parse(input))
-  .handler(async ({ data, context }) => {
-    const { data: role, error: roleError } = await context.supabase
-      .from("user_roles")
-      .select("id")
-      .eq("user_id", context.userId)
-      .eq("role", "admin")
-      .maybeSingle();
-    if (roleError || !role) throw new Error("Forbidden");
-
+  .handler(async ({ data }) => {
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const row = {
       page_slug: data.page_slug,
       section_key: data.section_key,
@@ -128,11 +82,11 @@ export const upsertSection = createServerFn({ method: "POST" })
       label: data.label ?? null,
       content: data.content as never,
       published: data.published,
-      updated_by: context.userId,
+      updated_by: null,
     };
 
     if (data.id) {
-      const { data: updated, error } = await context.supabase
+      const { data: updated, error } = await supabaseAdmin
         .from("page_sections")
         .update(row)
         .eq("id", data.id)
@@ -141,7 +95,7 @@ export const upsertSection = createServerFn({ method: "POST" })
       if (error) throw error;
       return updated;
     }
-    const { data: inserted, error } = await context.supabase
+    const { data: inserted, error } = await supabaseAdmin
       .from("page_sections")
       .insert(row)
       .select("*")
@@ -151,17 +105,10 @@ export const upsertSection = createServerFn({ method: "POST" })
   });
 
 export const deleteSection = createServerFn({ method: "POST" })
-  .middleware([requireSupabaseAuth])
   .inputValidator((input: { id: string }) => z.object({ id: z.string().uuid() }).parse(input))
-  .handler(async ({ data, context }) => {
-    const { data: role, error: roleError } = await context.supabase
-      .from("user_roles")
-      .select("id")
-      .eq("user_id", context.userId)
-      .eq("role", "admin")
-      .maybeSingle();
-    if (roleError || !role) throw new Error("Forbidden");
-    const { error } = await context.supabase.from("page_sections").delete().eq("id", data.id);
+  .handler(async ({ data }) => {
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { error } = await supabaseAdmin.from("page_sections").delete().eq("id", data.id);
     if (error) throw error;
     return { ok: true };
   });
