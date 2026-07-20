@@ -3,6 +3,10 @@ import { Section } from "@/components/site/section";
 import { CtaLink } from "@/components/site/cta";
 import { Hospital, GraduationCap, Plane, Building2, Check } from "lucide-react";
 import type { ReactNode } from "react";
+import appHospitals from "@/assets/app-hospitals.jpg";
+import appSchools from "@/assets/app-schools.jpg";
+import appTransit from "@/assets/app-transit.jpg";
+import appHospitality from "@/assets/app-hospitality.jpg";
 
 export const Route = createFileRoute("/applications")({
   head: () => ({
@@ -20,6 +24,7 @@ const SECTORS: {
   id: string;
   eyebrow: string;
   icon: ReactNode;
+  image: string;
   title: string;
   body: string;
   features: string[];
@@ -30,6 +35,7 @@ const SECTORS: {
     id: "hospitals",
     eyebrow: "Clinical ward deployment",
     icon: <Hospital className="h-6 w-6" />,
+    image: appHospitals,
     title: "Hospitals & Code Blue teams",
     body: "In general wards, CPR is often initiated by junior nursing staff before the Code Blue team arrives. CPR PRAYAS™ Pro standardizes compression depth and rate, logging telemetry to central quality dashboards for post-event debriefing.",
     features: [
@@ -44,6 +50,7 @@ const SECTORS: {
     id: "schools",
     eyebrow: "Educational safety",
     icon: <GraduationCap className="h-6 w-6" />,
+    image: appSchools,
     title: "Schools & educational foundations",
     body: "Integrating hands-on CPR training into mandatory physical education and health safety curricula. Students receive instant green-light feedback and QR-code scannable digital certification badges.",
     features: [
@@ -59,6 +66,7 @@ const SECTORS: {
     id: "transit",
     eyebrow: "Transit infrastructure",
     icon: <Plane className="h-6 w-6" />,
+    image: appTransit,
     title: "Airports & mass transit hubs",
     body: "High-density transit terminals feature public AEDs, but bystanders often hesitate. CPR PRAYAS™ One pierces terminal noise with an 85 dB speaker, issuing spoken directives to guide any passenger through resuscitation.",
     features: [
@@ -73,6 +81,7 @@ const SECTORS: {
     id: "hospitality",
     eyebrow: "Corporate & hospitality",
     icon: <Building2 className="h-6 w-6" />,
+    image: appHospitality,
     title: "Hotels, resorts & corporate campuses",
     body: "Guest and employee safety is non-negotiable. Deploy CPR PRAYAS™ One across every floor and event venue for immediate bystander response before EMS arrival.",
     features: [
@@ -123,8 +132,15 @@ function AppsPage() {
                 <CtaLink to="/contact">{s.cta}</CtaLink>
               </div>
             </div>
-            <div className="card-surface flex aspect-[4/3] items-center justify-center p-10">
-              <div className="text-6xl text-pulse/70">{s.icon}</div>
+            <div className="overflow-hidden rounded-3xl border border-border shadow-xl">
+              <img
+                src={s.image}
+                alt={s.title}
+                loading="lazy"
+                width={1408}
+                height={1056}
+                className="h-full w-full object-cover aspect-[4/3]"
+              />
             </div>
           </div>
         </Section>
