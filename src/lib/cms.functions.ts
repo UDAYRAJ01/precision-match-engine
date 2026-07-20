@@ -51,8 +51,13 @@ export const listPageSections = createServerFn({ method: "GET" })
 export const listAllSections = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
-    const isAdmin = await context.supabase.rpc("has_role", { _user_id: context.userId, _role: "admin" });
-    if (isAdmin.error || !isAdmin.data) throw new Error("Forbidden");
+    const { data: role, error: roleError } = await context.supabase
+      .from("user_roles")
+      .select("id")
+      .eq("user_id", context.userId)
+      .eq("role", "admin")
+      .maybeSingle();
+    if (roleError || !role) throw new Error("Forbidden");
     const { data, error } = await context.supabase
       .from("page_sections")
       .select("*")
@@ -65,10 +70,12 @@ export const listAllSections = createServerFn({ method: "GET" })
 export const checkIsAdmin = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
-    const { data, error } = await context.supabase.rpc("has_role", {
-      _user_id: context.userId,
-      _role: "admin",
-    });
+    const { data, error } = await context.supabase
+      .from("user_roles")
+      .select("id")
+      .eq("user_id", context.userId)
+      .eq("role", "admin")
+      .maybeSingle();
     if (error) return { isAdmin: false, userId: context.userId };
     return { isAdmin: Boolean(data), userId: context.userId };
   });
@@ -105,8 +112,13 @@ export const upsertSection = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((input) => upsertSchema.parse(input))
   .handler(async ({ data, context }) => {
-    const isAdmin = await context.supabase.rpc("has_role", { _user_id: context.userId, _role: "admin" });
-    if (isAdmin.error || !isAdmin.data) throw new Error("Forbidden");
+    const { data: role, error: roleError } = await context.supabase
+      .from("user_roles")
+      .select("id")
+      .eq("user_id", context.userId)
+      .eq("role", "admin")
+      .maybeSingle();
+    if (roleError || !role) throw new Error("Forbidden");
 
     const row = {
       page_slug: data.page_slug,
@@ -142,8 +154,13 @@ export const deleteSection = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((input: { id: string }) => z.object({ id: z.string().uuid() }).parse(input))
   .handler(async ({ data, context }) => {
-    const isAdmin = await context.supabase.rpc("has_role", { _user_id: context.userId, _role: "admin" });
-    if (isAdmin.error || !isAdmin.data) throw new Error("Forbidden");
+    const { data: role, error: roleError } = await context.supabase
+      .from("user_roles")
+      .select("id")
+      .eq("user_id", context.userId)
+      .eq("role", "admin")
+      .maybeSingle();
+    if (roleError || !role) throw new Error("Forbidden");
     const { error } = await context.supabase.from("page_sections").delete().eq("id", data.id);
     if (error) throw error;
     return { ok: true };
