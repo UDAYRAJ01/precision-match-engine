@@ -18,6 +18,7 @@ import { Route as HotelsRouteImport } from './routes/hotels'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ClinicalValidationRouteImport } from './routes/clinical-validation'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ApplicationsRouteImport } from './routes/applications'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -67,6 +68,11 @@ const ClinicalValidationRoute = ClinicalValidationRouteImport.update({
   path: '/clinical-validation',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApplicationsRoute = ApplicationsRouteImport.update({
   id: '/applications',
   path: '/applications',
@@ -87,6 +93,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/applications': typeof ApplicationsRoute
+  '/auth': typeof AuthRoute
   '/clinical-validation': typeof ClinicalValidationRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
@@ -101,6 +108,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/applications': typeof ApplicationsRoute
+  '/auth': typeof AuthRoute
   '/clinical-validation': typeof ClinicalValidationRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
@@ -116,6 +124,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/applications': typeof ApplicationsRoute
+  '/auth': typeof AuthRoute
   '/clinical-validation': typeof ClinicalValidationRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
@@ -132,6 +141,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/applications'
+    | '/auth'
     | '/clinical-validation'
     | '/contact'
     | '/faq'
@@ -146,6 +156,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/applications'
+    | '/auth'
     | '/clinical-validation'
     | '/contact'
     | '/faq'
@@ -160,6 +171,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/applications'
+    | '/auth'
     | '/clinical-validation'
     | '/contact'
     | '/faq'
@@ -175,6 +187,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ApplicationsRoute: typeof ApplicationsRoute
+  AuthRoute: typeof AuthRoute
   ClinicalValidationRoute: typeof ClinicalValidationRoute
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
@@ -251,6 +264,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ClinicalValidationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/applications': {
       id: '/applications'
       path: '/applications'
@@ -279,6 +299,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ApplicationsRoute: ApplicationsRoute,
+  AuthRoute: AuthRoute,
   ClinicalValidationRoute: ClinicalValidationRoute,
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
