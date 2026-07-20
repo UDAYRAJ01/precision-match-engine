@@ -9,77 +9,26 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TechnologyRouteImport } from './routes/technology'
-import { Route as ProductsRouteImport } from './routes/products'
-import { Route as PatentsRouteImport } from './routes/patents'
-import { Route as InvestorsRouteImport } from './routes/investors'
-import { Route as HowToUseRouteImport } from './routes/how-to-use'
-import { Route as HotelsRouteImport } from './routes/hotels'
-import { Route as FaqRouteImport } from './routes/faq'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as ClinicalValidationRouteImport } from './routes/clinical-validation'
-import { Route as AuthRouteImport } from './routes/auth'
-import { Route as ApplicationsRouteImport } from './routes/applications'
-import { Route as AboutRouteImport } from './routes/about'
-import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
-import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
-import { Route as AuthenticatedAdminPageRouteImport } from './routes/_authenticated/admin.$page'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as ApplicationsRouteImport } from './routes/applications'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as ClinicalValidationRouteImport } from './routes/clinical-validation'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as HotelsRouteImport } from './routes/hotels'
+import { Route as HowToUseRouteImport } from './routes/how-to-use'
+import { Route as InvestorsRouteImport } from './routes/investors'
+import { Route as PatentsRouteImport } from './routes/patents'
+import { Route as ProductsRouteImport } from './routes/products'
+import { Route as TechnologyRouteImport } from './routes/technology'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminPageRouteImport } from './routes/admin.$page'
 
-const TechnologyRoute = TechnologyRouteImport.update({
-  id: '/technology',
-  path: '/technology',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProductsRoute = ProductsRouteImport.update({
-  id: '/products',
-  path: '/products',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PatentsRoute = PatentsRouteImport.update({
-  id: '/patents',
-  path: '/patents',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const InvestorsRoute = InvestorsRouteImport.update({
-  id: '/investors',
-  path: '/investors',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HowToUseRoute = HowToUseRouteImport.update({
-  id: '/how-to-use',
-  path: '/how-to-use',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HotelsRoute = HotelsRouteImport.update({
-  id: '/hotels',
-  path: '/hotels',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FaqRoute = FaqRouteImport.update({
-  id: '/faq',
-  path: '/faq',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ClinicalValidationRoute = ClinicalValidationRouteImport.update({
-  id: '/clinical-validation',
-  path: '/clinical-validation',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthRoute = AuthRouteImport.update({
-  id: '/auth',
-  path: '/auth',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApplicationsRoute = ApplicationsRouteImport.update({
-  id: '/applications',
-  path: '/applications',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -87,34 +36,81 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
-  id: '/_authenticated',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
+const AdminRoute = AdminRouteImport.update({
   id: '/admin',
   path: '/admin',
-  getParentRoute: () => AuthenticatedRouteRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
+const ApplicationsRoute = ApplicationsRouteImport.update({
+  id: '/applications',
+  path: '/applications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClinicalValidationRoute = ClinicalValidationRouteImport.update({
+  id: '/clinical-validation',
+  path: '/clinical-validation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HotelsRoute = HotelsRouteImport.update({
+  id: '/hotels',
+  path: '/hotels',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HowToUseRoute = HowToUseRouteImport.update({
+  id: '/how-to-use',
+  path: '/how-to-use',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvestorsRoute = InvestorsRouteImport.update({
+  id: '/investors',
+  path: '/investors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PatentsRoute = PatentsRouteImport.update({
+  id: '/patents',
+  path: '/patents',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsRoute = ProductsRouteImport.update({
+  id: '/products',
+  path: '/products',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TechnologyRoute = TechnologyRouteImport.update({
+  id: '/technology',
+  path: '/technology',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => AuthenticatedAdminRoute,
+  getParentRoute: () => AdminRoute,
 } as any)
-const AuthenticatedAdminPageRoute = AuthenticatedAdminPageRouteImport.update({
+const AdminPageRoute = AdminPageRouteImport.update({
   id: '/$page',
   path: '/$page',
-  getParentRoute: () => AuthenticatedAdminRoute,
+  getParentRoute: () => AdminRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRouteWithChildren
   '/applications': typeof ApplicationsRoute
   '/auth': typeof AuthRoute
   '/clinical-validation': typeof ClinicalValidationRoute
@@ -126,9 +122,8 @@ export interface FileRoutesByFullPath {
   '/patents': typeof PatentsRoute
   '/products': typeof ProductsRoute
   '/technology': typeof TechnologyRoute
-  '/admin': typeof AuthenticatedAdminRouteWithChildren
-  '/admin/$page': typeof AuthenticatedAdminPageRoute
-  '/admin/': typeof AuthenticatedAdminIndexRoute
+  '/admin/$page': typeof AdminPageRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -144,14 +139,14 @@ export interface FileRoutesByTo {
   '/patents': typeof PatentsRoute
   '/products': typeof ProductsRoute
   '/technology': typeof TechnologyRoute
-  '/admin/$page': typeof AuthenticatedAdminPageRoute
-  '/admin': typeof AuthenticatedAdminIndexRoute
+  '/admin/$page': typeof AdminPageRoute
+  '/admin': typeof AdminIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRouteWithChildren
   '/applications': typeof ApplicationsRoute
   '/auth': typeof AuthRoute
   '/clinical-validation': typeof ClinicalValidationRoute
@@ -163,15 +158,15 @@ export interface FileRoutesById {
   '/patents': typeof PatentsRoute
   '/products': typeof ProductsRoute
   '/technology': typeof TechnologyRoute
-  '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
-  '/_authenticated/admin/$page': typeof AuthenticatedAdminPageRoute
-  '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
+  '/admin/$page': typeof AdminPageRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
+    | '/admin'
     | '/applications'
     | '/auth'
     | '/clinical-validation'
@@ -183,7 +178,6 @@ export interface FileRouteTypes {
     | '/patents'
     | '/products'
     | '/technology'
-    | '/admin'
     | '/admin/$page'
     | '/admin/'
   fileRoutesByTo: FileRoutesByTo
@@ -206,8 +200,8 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/_authenticated'
     | '/about'
+    | '/admin'
     | '/applications'
     | '/auth'
     | '/clinical-validation'
@@ -219,15 +213,14 @@ export interface FileRouteTypes {
     | '/patents'
     | '/products'
     | '/technology'
-    | '/_authenticated/admin'
-    | '/_authenticated/admin/$page'
-    | '/_authenticated/admin/'
+    | '/admin/$page'
+    | '/admin/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
+  AdminRoute: typeof AdminRouteWithChildren
   ApplicationsRoute: typeof ApplicationsRoute
   AuthRoute: typeof AuthRoute
   ClinicalValidationRoute: typeof ClinicalValidationRoute
@@ -243,81 +236,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/technology': {
-      id: '/technology'
-      path: '/technology'
-      fullPath: '/technology'
-      preLoaderRoute: typeof TechnologyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/products': {
-      id: '/products'
-      path: '/products'
-      fullPath: '/products'
-      preLoaderRoute: typeof ProductsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/patents': {
-      id: '/patents'
-      path: '/patents'
-      fullPath: '/patents'
-      preLoaderRoute: typeof PatentsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/investors': {
-      id: '/investors'
-      path: '/investors'
-      fullPath: '/investors'
-      preLoaderRoute: typeof InvestorsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/how-to-use': {
-      id: '/how-to-use'
-      path: '/how-to-use'
-      fullPath: '/how-to-use'
-      preLoaderRoute: typeof HowToUseRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/hotels': {
-      id: '/hotels'
-      path: '/hotels'
-      fullPath: '/hotels'
-      preLoaderRoute: typeof HotelsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/faq': {
-      id: '/faq'
-      path: '/faq'
-      fullPath: '/faq'
-      preLoaderRoute: typeof FaqRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/clinical-validation': {
-      id: '/clinical-validation'
-      path: '/clinical-validation'
-      fullPath: '/clinical-validation'
-      preLoaderRoute: typeof ClinicalValidationRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/auth': {
-      id: '/auth'
-      path: '/auth'
-      fullPath: '/auth'
-      preLoaderRoute: typeof AuthRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/applications': {
-      id: '/applications'
-      path: '/applications'
-      fullPath: '/applications'
-      preLoaderRoute: typeof ApplicationsRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -327,72 +250,123 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_authenticated': {
-      id: '/_authenticated'
-      path: ''
-      fullPath: '/'
-      preLoaderRoute: typeof AuthenticatedRouteRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_authenticated/admin': {
-      id: '/_authenticated/admin'
+    '/admin': {
+      id: '/admin'
       path: '/admin'
       fullPath: '/admin'
-      preLoaderRoute: typeof AuthenticatedAdminRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/_authenticated/admin/': {
-      id: '/_authenticated/admin/'
+    '/applications': {
+      id: '/applications'
+      path: '/applications'
+      fullPath: '/applications'
+      preLoaderRoute: typeof ApplicationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/clinical-validation': {
+      id: '/clinical-validation'
+      path: '/clinical-validation'
+      fullPath: '/clinical-validation'
+      preLoaderRoute: typeof ClinicalValidationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hotels': {
+      id: '/hotels'
+      path: '/hotels'
+      fullPath: '/hotels'
+      preLoaderRoute: typeof HotelsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/how-to-use': {
+      id: '/how-to-use'
+      path: '/how-to-use'
+      fullPath: '/how-to-use'
+      preLoaderRoute: typeof HowToUseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/investors': {
+      id: '/investors'
+      path: '/investors'
+      fullPath: '/investors'
+      preLoaderRoute: typeof InvestorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/patents': {
+      id: '/patents'
+      path: '/patents'
+      fullPath: '/patents'
+      preLoaderRoute: typeof PatentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products': {
+      id: '/products'
+      path: '/products'
+      fullPath: '/products'
+      preLoaderRoute: typeof ProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/technology': {
+      id: '/technology'
+      path: '/technology'
+      fullPath: '/technology'
+      preLoaderRoute: typeof TechnologyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/': {
+      id: '/admin/'
       path: '/'
       fullPath: '/admin/'
-      preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
     }
-    '/_authenticated/admin/$page': {
-      id: '/_authenticated/admin/$page'
+    '/admin/$page': {
+      id: '/admin/$page'
       path: '/$page'
       fullPath: '/admin/$page'
-      preLoaderRoute: typeof AuthenticatedAdminPageRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
+      preLoaderRoute: typeof AdminPageRouteImport
+      parentRoute: typeof AdminRoute
     }
   }
 }
 
-interface AuthenticatedAdminRouteChildren {
-  AuthenticatedAdminPageRoute: typeof AuthenticatedAdminPageRoute
-  AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
+interface AdminRouteChildren {
+  AdminPageRoute: typeof AdminPageRoute
+  AdminIndexRoute: typeof AdminIndexRoute
 }
 
-const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
-  AuthenticatedAdminPageRoute: AuthenticatedAdminPageRoute,
-  AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminPageRoute: AdminPageRoute,
+  AdminIndexRoute: AdminIndexRoute,
 }
 
-const AuthenticatedAdminRouteWithChildren =
-  AuthenticatedAdminRoute._addFileChildren(AuthenticatedAdminRouteChildren)
-
-interface AuthenticatedRouteRouteChildren {
-  AuthenticatedAdminRoute: typeof AuthenticatedAdminRouteWithChildren
-}
-
-const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
-  AuthenticatedAdminRoute: AuthenticatedAdminRouteWithChildren,
-}
-
-const AuthenticatedRouteRouteWithChildren =
-  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AboutRoute: AboutRoute,
+  AdminRoute: AdminRouteWithChildren,
   ApplicationsRoute: ApplicationsRoute,
   AuthRoute: AuthRoute,
   ClinicalValidationRoute: ClinicalValidationRoute,
