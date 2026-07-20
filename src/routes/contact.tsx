@@ -2,6 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Section } from "@/components/site/section";
 import { DemoForm } from "@/components/site/demo-form";
 import { Mail, MapPin, Globe } from "lucide-react";
+import { PageBanner } from "@/components/site/page-banner";
+import bannerContact from "@/assets/banner-contact.jpg";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -18,19 +20,12 @@ export const Route = createFileRoute("/contact")({
 function ContactPage() {
   return (
     <>
-      <Section bordered={false}>
-        <div className="mx-auto max-w-3xl text-center">
-          <span className="eyebrow"><span className="pulse-dot" /> Partner with us</span>
-          <h1 className="mt-6 font-display text-4xl font-bold tracking-tight sm:text-5xl">
-            Request a live institutional demo &{" "}
-            <span className="text-pulse">RFP procurement quotation</span>
-          </h1>
-          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Connect with our MedTech clinical deployment team to evaluate CPR PRAYAS™ for your
-            hospital, school district, hotel group, or emergency network.
-          </p>
-        </div>
-      </Section>
+      <PageBanner
+        image={bannerContact}
+        eyebrow="Partner with us"
+        title={<>Request a live institutional demo & <span className="text-pulse">RFP procurement quotation</span></>}
+        subtitle="Connect with our MedTech clinical deployment team to evaluate CPR PRAYAS™ for your hospital, school district, hotel group, or emergency network."
+      />
 
       <Section surface>
         <div className="grid gap-10 lg:grid-cols-[1fr_1.15fr]">
