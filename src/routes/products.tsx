@@ -1,7 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Section, SectionHeader, DeviceMock } from "@/components/site/section";
+import { Section } from "@/components/site/section";
 import { CtaLink } from "@/components/site/cta";
 import { Check } from "lucide-react";
+import productOne from "@/assets/product-one.jpg";
+import productPro from "@/assets/product-pro.jpg";
+import productConnect from "@/assets/product-connect.jpg";
 
 export const Route = createFileRoute("/products")({
   head: () => ({
@@ -20,7 +23,7 @@ const PRODUCTS = [
     id: "one",
     eyebrow: "Ultra-portable device",
     name: "CPR PRAYAS™ One",
-    tone: "pulse" as const,
+    image: productOne,
     desc: "Designed for bystanders and first-aid deployment in schools, hotels, public transit, and emergency kits. Compact, pocket-sized, instantly operational with single-button activation and real-time audio guidance.",
     features: [
       "High-decibel acoustic metronome (110 BPM target)",
@@ -34,7 +37,7 @@ const PRODUCTS = [
     id: "pro",
     eyebrow: "Clinical grade system",
     name: "CPR PRAYAS™ Pro",
-    tone: "emerald" as const,
+    image: productPro,
     desc: "Engineered for hospital Code Blue teams, EMS ambulances, and accredited resuscitation simulation centers requiring continuous telemetry monitoring and defibrillator isolation.",
     features: [
       "360° high-luminance RGB LED force guidance ring",
@@ -49,7 +52,7 @@ const PRODUCTS = [
     id: "connect",
     eyebrow: "Companion telemetry app",
     name: "CPR PRAYAS™ Connect",
-    tone: "ink" as const,
+    image: productConnect,
     desc: "The software bridge connecting PRAYAS hardware to emergency dispatchers and cloud institutional dashboards. Real-time CPR compression graphs via Bluetooth Low Energy (BLE 5.2).",
     features: [
       "Real-time visual ECG and depth oscilloscope graphs",
@@ -96,8 +99,15 @@ function ProductsPage() {
                 <CtaLink to="/contact">{p.cta}</CtaLink>
               </div>
             </div>
-            <div className="mx-auto w-full max-w-sm">
-              <DeviceMock label={p.name} tone={p.tone} />
+            <div className="mx-auto w-full max-w-md">
+              <img
+                src={p.image}
+                alt={p.name}
+                loading="lazy"
+                width={1200}
+                height={1200}
+                className="w-full rounded-3xl border border-border shadow-xl"
+              />
             </div>
           </div>
         </Section>
