@@ -18,9 +18,14 @@ import { Route as HotelsRouteImport } from './routes/hotels'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ClinicalValidationRouteImport } from './routes/clinical-validation'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ApplicationsRouteImport } from './routes/applications'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
+import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
+import { Route as AuthenticatedAdminPageRouteImport } from './routes/_authenticated/admin.$page'
 
 const TechnologyRoute = TechnologyRouteImport.update({
   id: '/technology',
@@ -67,6 +72,11 @@ const ClinicalValidationRoute = ClinicalValidationRouteImport.update({
   path: '/clinical-validation',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApplicationsRoute = ApplicationsRouteImport.update({
   id: '/applications',
   path: '/applications',
@@ -77,16 +87,36 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
+const AuthenticatedAdminPageRoute = AuthenticatedAdminPageRouteImport.update({
+  id: '/$page',
+  path: '/$page',
+  getParentRoute: () => AuthenticatedAdminRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/applications': typeof ApplicationsRoute
+  '/auth': typeof AuthRoute
   '/clinical-validation': typeof ClinicalValidationRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
@@ -96,11 +126,15 @@ export interface FileRoutesByFullPath {
   '/patents': typeof PatentsRoute
   '/products': typeof ProductsRoute
   '/technology': typeof TechnologyRoute
+  '/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/admin/$page': typeof AuthenticatedAdminPageRoute
+  '/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/applications': typeof ApplicationsRoute
+  '/auth': typeof AuthRoute
   '/clinical-validation': typeof ClinicalValidationRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
@@ -110,12 +144,16 @@ export interface FileRoutesByTo {
   '/patents': typeof PatentsRoute
   '/products': typeof ProductsRoute
   '/technology': typeof TechnologyRoute
+  '/admin/$page': typeof AuthenticatedAdminPageRoute
+  '/admin': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/about': typeof AboutRoute
   '/applications': typeof ApplicationsRoute
+  '/auth': typeof AuthRoute
   '/clinical-validation': typeof ClinicalValidationRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
@@ -125,6 +163,9 @@ export interface FileRoutesById {
   '/patents': typeof PatentsRoute
   '/products': typeof ProductsRoute
   '/technology': typeof TechnologyRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/_authenticated/admin/$page': typeof AuthenticatedAdminPageRoute
+  '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -132,6 +173,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/applications'
+    | '/auth'
     | '/clinical-validation'
     | '/contact'
     | '/faq'
@@ -141,11 +183,15 @@ export interface FileRouteTypes {
     | '/patents'
     | '/products'
     | '/technology'
+    | '/admin'
+    | '/admin/$page'
+    | '/admin/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/applications'
+    | '/auth'
     | '/clinical-validation'
     | '/contact'
     | '/faq'
@@ -155,11 +201,15 @@ export interface FileRouteTypes {
     | '/patents'
     | '/products'
     | '/technology'
+    | '/admin/$page'
+    | '/admin'
   id:
     | '__root__'
     | '/'
+    | '/_authenticated'
     | '/about'
     | '/applications'
+    | '/auth'
     | '/clinical-validation'
     | '/contact'
     | '/faq'
@@ -169,12 +219,17 @@ export interface FileRouteTypes {
     | '/patents'
     | '/products'
     | '/technology'
+    | '/_authenticated/admin'
+    | '/_authenticated/admin/$page'
+    | '/_authenticated/admin/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
   ApplicationsRoute: typeof ApplicationsRoute
+  AuthRoute: typeof AuthRoute
   ClinicalValidationRoute: typeof ClinicalValidationRoute
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
@@ -251,6 +306,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ClinicalValidationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/applications': {
       id: '/applications'
       path: '/applications'
@@ -265,6 +327,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -272,13 +341,60 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/admin/': {
+      id: '/_authenticated/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/$page': {
+      id: '/_authenticated/admin/$page'
+      path: '/$page'
+      fullPath: '/admin/$page'
+      preLoaderRoute: typeof AuthenticatedAdminPageRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
   }
 }
 
+interface AuthenticatedAdminRouteChildren {
+  AuthenticatedAdminPageRoute: typeof AuthenticatedAdminPageRoute
+  AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
+}
+
+const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
+  AuthenticatedAdminPageRoute: AuthenticatedAdminPageRoute,
+  AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
+}
+
+const AuthenticatedAdminRouteWithChildren =
+  AuthenticatedAdminRoute._addFileChildren(AuthenticatedAdminRouteChildren)
+
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminRoute: typeof AuthenticatedAdminRouteWithChildren
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminRoute: AuthenticatedAdminRouteWithChildren,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AboutRoute: AboutRoute,
   ApplicationsRoute: ApplicationsRoute,
+  AuthRoute: AuthRoute,
   ClinicalValidationRoute: ClinicalValidationRoute,
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
