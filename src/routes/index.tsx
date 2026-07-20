@@ -34,57 +34,55 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <div className="container-page space-y-24 py-16 md:py-24">
+    <div className="container-page space-y-16 py-10 sm:space-y-20 sm:py-16 md:space-y-24 md:py-24">
       {/* Hero */}
       <section className="relative flex flex-col items-center text-center">
-        <div className="inline-flex items-center gap-2 rounded-full border border-pulse/25 bg-surface px-3 py-1">
+        <span className="app-chip">
           <span className="pulse-dot" />
-          <span className="font-display text-xs font-medium uppercase tracking-wider text-pulse">
-            Clinical Grade MedTech
-          </span>
-        </div>
+          Clinical Grade MedTech
+        </span>
 
-        <h1 className="mt-8 font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-8xl">
+        <h1 className="h-display mt-6 sm:mt-8">
           Intelligent CPR
           <br />
           <span className="bg-gradient-to-r from-emerald to-pulse bg-clip-text text-transparent">
             Guidance Systems.
           </span>
         </h1>
-        <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+        <p className="text-lede mt-6 max-w-2xl sm:mt-8">
           Precision metronome, depth feedback, and real-time analytics engineered for
           professional responders. CPR PRAYAS™ bridges the gap between effort and outcomes.
         </p>
-        <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-          <CtaLink to="/contact" className="shadow-[0_0_28px_color-mix(in_oklch,var(--pulse)_35%,transparent)]">
+        <div className="mt-8 flex w-full flex-col gap-3 sm:mt-10 sm:w-auto sm:flex-row sm:gap-4">
+          <CtaLink to="/contact" className="justify-center shadow-[0_0_28px_color-mix(in_oklch,var(--pulse)_35%,transparent)]">
             Request demo <ArrowRight className="h-4 w-4" />
           </CtaLink>
-          <CtaLink to="/products" variant="outline">View products</CtaLink>
+          <CtaLink to="/products" variant="outline" className="justify-center">View products</CtaLink>
         </div>
-        <div className="relative mt-16 w-full max-w-5xl">
-          <div className="pointer-events-none absolute -inset-8 rounded-[3rem] bg-gradient-to-br from-pulse/20 via-transparent to-emerald/20 blur-3xl" />
+        <div className="relative mt-10 w-full max-w-5xl sm:mt-16">
+          <div className="pointer-events-none absolute -inset-6 rounded-[3rem] bg-gradient-to-br from-pulse/20 via-transparent to-emerald/20 blur-3xl sm:-inset-8" />
           <img
             src={heroDevice}
             alt="CPR PRAYAS™ intelligent guidance device with glowing feedback ring"
             width={1600}
             height={1200}
-            className="relative w-full rounded-3xl border border-border shadow-2xl"
+            className="relative w-full rounded-2xl border border-border shadow-2xl sm:rounded-3xl"
           />
         </div>
       </section>
 
       {/* Impact strip */}
-      <section className="grid grid-cols-2 gap-4 rounded-3xl border border-border bg-surface/40 p-6 md:grid-cols-4 md:p-8">
+      <section className="app-card grid grid-cols-2 gap-3 p-4 sm:gap-4 sm:p-6 md:grid-cols-4 md:p-8">
         {[
           { k: "700K+", v: "SCA deaths / year in India", i: AlertTriangle },
           { k: "< 10%", v: "Out-of-hospital survival today", i: TrendingDown },
           { k: "2–3×", v: "Survival with quality CPR", i: HeartPulse },
           { k: "< 4 min", v: "Window to prevent brain damage", i: Timer },
         ].map(({ k, v, i: Icon }) => (
-          <div key={v} className="flex flex-col items-start gap-2">
-            <Icon className="h-5 w-5 text-pulse" />
-            <div className="font-display text-2xl font-bold md:text-3xl">{k}</div>
-            <div className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+          <div key={v} className="flex flex-col items-start gap-1.5 rounded-2xl bg-background/30 p-3 sm:gap-2 sm:bg-transparent sm:p-0">
+            <Icon className="h-4 w-4 text-pulse sm:h-5 sm:w-5" />
+            <div className="font-display text-xl font-bold sm:text-2xl md:text-3xl">{k}</div>
+            <div className="text-[0.65rem] font-medium uppercase leading-snug tracking-wider text-muted-foreground sm:text-xs">
               {v}
             </div>
           </div>
@@ -95,17 +93,17 @@ function Index() {
       <section className="grid gap-10 md:grid-cols-12 md:items-center">
         <div className="md:col-span-5">
           <span className="eyebrow"><span className="pulse-dot" /> The problem</span>
-          <h2 className="mt-5 font-display text-4xl font-bold tracking-tight md:text-5xl">
+          <h2 className="h-section mt-4">
             Every second without a heartbeat costs a life.
           </h2>
-          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+          <p className="text-lede mt-5">
             Sudden Cardiac Arrest strikes without warning — in homes, offices,
             gyms and public spaces. Bystanders panic, compressions are too
             shallow or too slow, and survival drops 10% every minute help is
             delayed.
           </p>
         </div>
-        <div className="grid gap-4 md:col-span-7 md:grid-cols-2">
+        <div className="grid gap-3 sm:gap-4 md:col-span-7 md:grid-cols-2">
           {[
             {
               t: "Untrained bystanders freeze",
@@ -124,9 +122,9 @@ function Index() {
               d: "AEDs shock rhythms; only continuous quality CPR keeps blood flowing.",
             },
           ].map((p) => (
-            <div key={p.t} className="rounded-2xl border border-border bg-surface/40 p-6">
-              <h3 className="font-display text-lg font-semibold text-ink">{p.t}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.d}</p>
+            <div key={p.t} className="app-card p-5 sm:p-6">
+              <h3 className="h-card text-ink">{p.t}</h3>
+              <p className="mt-2 text-[0.9rem] leading-relaxed text-muted-foreground">{p.d}</p>
             </div>
           ))}
         </div>
@@ -136,27 +134,27 @@ function Index() {
       <section>
         <div className="mx-auto max-w-2xl text-center">
           <span className="eyebrow-emerald">How it works</span>
-          <h2 className="mt-5 font-display text-4xl font-bold tracking-tight md:text-5xl">
+          <h2 className="h-section mt-4">
             From panic to protocol in seconds.
           </h2>
-          <p className="mt-5 text-muted-foreground">
+          <p className="text-lede mt-4">
             One-button activation. Multi-sensory guidance. Automatic reporting.
           </p>
         </div>
-        <ol className="mt-14 grid gap-6 md:grid-cols-4">
+        <ol className="mt-10 grid gap-4 sm:gap-6 sm:grid-cols-2 md:mt-14 md:grid-cols-4">
           {[
             { n: "01", t: "Grab & place", d: "Snap PRAYAS onto the chest — the contour locks correct hand position.", i: HeartPulse },
             { n: "02", t: "Power on", d: "One press starts a real-time metronome and voice coaching.", i: Volume2 },
             { n: "03", t: "Compress with feedback", d: "LED ring, haptics and voice keep depth 5–6 cm and rate 100–120/min.", i: Gauge },
             { n: "04", t: "Auto-report", d: "Session syncs to Connect — PDF debrief and compliance log.", i: CloudUpload },
           ].map(({ n, t, d, i: Icon }) => (
-            <li key={n} className="relative rounded-3xl border border-border bg-surface/50 p-7">
+            <li key={n} className="app-card p-5 sm:p-6 md:p-7">
               <div className="flex items-center justify-between">
                 <span className="font-display text-sm font-bold tracking-widest text-pulse">{n}</span>
                 <Icon className="h-5 w-5 text-pulse" />
               </div>
-              <h3 className="mt-6 font-display text-xl font-semibold">{t}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{d}</p>
+              <h3 className="h-card mt-5">{t}</h3>
+              <p className="mt-2 text-[0.9rem] leading-relaxed text-muted-foreground">{d}</p>
             </li>
           ))}
         </ol>
@@ -268,16 +266,16 @@ function Index() {
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-xl">
             <span className="eyebrow"><span className="pulse-dot" /> What's inside</span>
-            <h2 className="mt-5 font-display text-4xl font-bold tracking-tight md:text-5xl">
+            <h2 className="h-section mt-4">
               Engineered for the worst 10 minutes of someone's life.
             </h2>
           </div>
-          <p className="max-w-md text-muted-foreground">
+          <p className="text-lede max-w-md">
             Every subsystem is designed for reliability under stress — resistant
             to sweat, blood, tremor and untrained hands.
           </p>
         </div>
-        <div className="mt-10 grid gap-4 md:grid-cols-3">
+        <div className="mt-8 grid gap-3 sm:gap-4 sm:grid-cols-2 md:mt-10 md:grid-cols-3">
           {[
             { i: Gauge, t: "±1 mm depth precision", d: "Load-cell + IMU fusion tracks every compression to sub-millimeter accuracy." },
             { i: Volume2, t: "Trilingual voice coach", d: "English, Hindi and regional prompts guide untrained bystanders through every step." },
@@ -286,12 +284,12 @@ function Index() {
             { i: ShieldCheck, t: "AHA 2025 aligned", d: "Depth, rate, recoil and fraction targets validated against the latest guidelines." },
             { i: GraduationCap, t: "Built-in training mode", d: "Simulated cycles with scoring — turn every fire drill into CPR practice." },
           ].map(({ i: Icon, t, d }) => (
-            <div key={t} className="rounded-3xl border border-border bg-surface/40 p-6">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-pulse/10 text-pulse">
+            <div key={t} className="app-card p-5 sm:p-6">
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-pulse/12 text-pulse">
                 <Icon className="h-5 w-5" />
               </div>
-              <h3 className="mt-5 font-display text-lg font-semibold">{t}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{d}</p>
+              <h3 className="h-card mt-4">{t}</h3>
+              <p className="mt-2 text-[0.9rem] leading-relaxed text-muted-foreground">{d}</p>
             </div>
           ))}
         </div>
@@ -301,11 +299,11 @@ function Index() {
       <section>
         <div className="mx-auto max-w-2xl text-center">
           <span className="eyebrow-emerald">Built for every environment</span>
-          <h2 className="mt-5 font-display text-4xl font-bold tracking-tight md:text-5xl">
+          <h2 className="h-section mt-4">
             Wherever hearts stop, PRAYAS belongs.
           </h2>
         </div>
-        <div className="mt-12 grid gap-4 md:grid-cols-4">
+        <div className="mt-8 grid gap-3 sm:gap-4 sm:grid-cols-2 md:mt-12 md:grid-cols-4">
           {[
             { i: Building2, t: "Hospitals & EMS", d: "Code Blue teams, ambulances, ICUs." , to: "/applications" as const },
             { i: Hotel, t: "Hotels & venues", d: "Guest safety, staff readiness, brand trust.", to: "/hotels" as const },
@@ -315,12 +313,14 @@ function Index() {
             <Link
               key={t}
               to={to}
-              className="group flex flex-col rounded-3xl border border-border bg-surface/40 p-6 transition-colors hover:border-pulse/50 hover:bg-surface"
+              className="app-card group flex flex-col p-5 transition-colors hover:border-pulse/50 sm:p-6"
             >
-              <Icon className="h-6 w-6 text-pulse" />
-              <h3 className="mt-5 font-display text-lg font-semibold">{t}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{d}</p>
-              <span className="mt-6 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-widest text-pulse">
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-pulse/12 text-pulse">
+                <Icon className="h-5 w-5" />
+              </div>
+              <h3 className="h-card mt-4">{t}</h3>
+              <p className="mt-2 text-[0.9rem] leading-relaxed text-muted-foreground">{d}</p>
+              <span className="mt-5 inline-flex items-center gap-1 text-[0.7rem] font-semibold uppercase tracking-widest text-pulse">
                 Explore <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
               </span>
             </Link>
