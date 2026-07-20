@@ -25,6 +25,7 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
+import { Route as AuthenticatedAdminPageRouteImport } from './routes/_authenticated/admin.$page'
 
 const TechnologyRoute = TechnologyRouteImport.update({
   id: '/technology',
@@ -105,6 +106,11 @@ const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AuthenticatedAdminRoute,
 } as any)
+const AuthenticatedAdminPageRoute = AuthenticatedAdminPageRouteImport.update({
+  id: '/$page',
+  path: '/$page',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -121,6 +127,7 @@ export interface FileRoutesByFullPath {
   '/products': typeof ProductsRoute
   '/technology': typeof TechnologyRoute
   '/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/admin/$page': typeof AuthenticatedAdminPageRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRoutesByTo {
@@ -137,6 +144,7 @@ export interface FileRoutesByTo {
   '/patents': typeof PatentsRoute
   '/products': typeof ProductsRoute
   '/technology': typeof TechnologyRoute
+  '/admin/$page': typeof AuthenticatedAdminPageRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRoutesById {
@@ -156,6 +164,7 @@ export interface FileRoutesById {
   '/products': typeof ProductsRoute
   '/technology': typeof TechnologyRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/_authenticated/admin/$page': typeof AuthenticatedAdminPageRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRouteTypes {
@@ -175,6 +184,7 @@ export interface FileRouteTypes {
     | '/products'
     | '/technology'
     | '/admin'
+    | '/admin/$page'
     | '/admin/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -191,6 +201,7 @@ export interface FileRouteTypes {
     | '/patents'
     | '/products'
     | '/technology'
+    | '/admin/$page'
     | '/admin'
   id:
     | '__root__'
@@ -209,6 +220,7 @@ export interface FileRouteTypes {
     | '/products'
     | '/technology'
     | '/_authenticated/admin'
+    | '/_authenticated/admin/$page'
     | '/_authenticated/admin/'
   fileRoutesById: FileRoutesById
 }
@@ -343,14 +355,23 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
+    '/_authenticated/admin/$page': {
+      id: '/_authenticated/admin/$page'
+      path: '/$page'
+      fullPath: '/admin/$page'
+      preLoaderRoute: typeof AuthenticatedAdminPageRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
   }
 }
 
 interface AuthenticatedAdminRouteChildren {
+  AuthenticatedAdminPageRoute: typeof AuthenticatedAdminPageRoute
   AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
 }
 
 const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
+  AuthenticatedAdminPageRoute: AuthenticatedAdminPageRoute,
   AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
 }
 

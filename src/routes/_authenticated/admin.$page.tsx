@@ -67,7 +67,16 @@ function PageEditor() {
   );
 }
 
-type UpsertInput = Parameters<ReturnType<typeof useServerFn<typeof upsertSection>>>[0]["data"];
+type UpsertInput = {
+  id?: string;
+  page_slug: string;
+  section_key: string;
+  section_type: "text" | "richtext" | "list" | "image" | "stat" | "json";
+  sort_order: number;
+  label: string | null;
+  content: unknown;
+  published: boolean;
+};
 
 function SectionRow({
   section, onSave, onDelete,
