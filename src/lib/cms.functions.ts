@@ -63,7 +63,7 @@ const upsertSchema = z.object({
   id: z.string().uuid().optional(),
   page_slug: z.string().min(1).max(80),
   section_key: z.string().min(1).max(120),
-  section_type: z.enum(["text", "richtext", "list", "image", "stat", "json"]).default("text"),
+  section_type: z.enum(["fields", "text", "richtext", "list", "image", "stat", "json"]).default("fields"),
   sort_order: z.number().int().default(0),
   label: z.string().max(200).nullable().optional(),
   content: z.unknown(),

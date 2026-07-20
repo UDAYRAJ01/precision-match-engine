@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Section, SectionHeader } from "@/components/site/section";
 import { CtaLink } from "@/components/site/cta";
-import { PageBanner } from "@/components/site/page-banner";
+import { CmsPageBanner } from "@/components/site/cms-page-banner";
 import bannerHotels from "@/assets/banner-hotels.jpg";
 import {
   Check,
@@ -38,7 +38,7 @@ export const Route = createFileRoute("/hotels")({
 function HotelsPage() {
   return (
     <>
-      <PageBanner
+      <CmsPageBanner page="hotels"
         image={bannerHotels}
         eyebrow="Hospitality safety"
         title={<>Revolutionizing emergency response <span className="text-pulse">in hotels</span></>}

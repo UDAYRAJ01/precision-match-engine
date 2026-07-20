@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Section } from "@/components/site/section";
 import { DemoForm } from "@/components/site/demo-form";
 import { Mail, MapPin, Globe } from "lucide-react";
-import { PageBanner } from "@/components/site/page-banner";
+import { CmsPageBanner } from "@/components/site/cms-page-banner";
 import bannerContact from "@/assets/banner-contact.jpg";
 
 export const Route = createFileRoute("/contact")({
@@ -20,7 +20,7 @@ export const Route = createFileRoute("/contact")({
 function ContactPage() {
   return (
     <>
-      <PageBanner
+      <CmsPageBanner page="contact"
         image={bannerContact}
         eyebrow="Partner with us"
         title={<>Request a live institutional demo & <span className="text-pulse">RFP procurement quotation</span></>}

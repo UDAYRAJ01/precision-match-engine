@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Section, SectionHeader } from "@/components/site/section";
 import { CtaLink } from "@/components/site/cta";
-import { PageBanner } from "@/components/site/page-banner";
+import { CmsPageBanner } from "@/components/site/cms-page-banner";
 import bannerInvestors from "@/assets/banner-investors.jpg";
 import sectionGrowth from "@/assets/section-investors-growth.jpg";
 
@@ -39,7 +39,7 @@ const ALLOC = [
 function InvestorsPage() {
   return (
     <>
-      <PageBanner
+      <CmsPageBanner page="investors"
         image={bannerInvestors}
         eyebrow="Capital & growth portal"
         title={<>Disrupting the $4.8B global <span className="text-pulse">resuscitation MedTech market</span></>}

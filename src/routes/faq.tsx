@@ -6,7 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { PageBanner } from "@/components/site/page-banner";
+import { CmsPageBanner } from "@/components/site/cms-page-banner";
 import bannerFaq from "@/assets/banner-faq.jpg";
 
 export const Route = createFileRoute("/faq")({
@@ -73,7 +73,7 @@ const CATEGORIES: { n: string; title: string; items: [string, string][] }[] = [
 function FaqPage() {
   return (
     <>
-      <PageBanner
+      <CmsPageBanner page="faq"
         image={bannerFaq}
         eyebrow="Knowledge base & support"
         title={<>Answers on device mechanics, <span className="text-pulse">clinical operation & deployment</span></>}

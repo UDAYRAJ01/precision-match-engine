@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Section, SectionHeader } from "@/components/site/section";
 import { CtaLink } from "@/components/site/cta";
-import { PageBanner } from "@/components/site/page-banner";
+import { CmsPageBanner } from "@/components/site/cms-page-banner";
 import bannerPatents from "@/assets/banner-patents.jpg";
 
 export const Route = createFileRoute("/patents")({
@@ -25,7 +25,7 @@ const CLAIMS = [
 function PatentsPage() {
   return (
     <>
-      <PageBanner
+      <CmsPageBanner page="patents"
         image={bannerPatents}
         eyebrow="MedTech IP portfolio"
         title={<>Proprietary patent architecture & <span className="text-pulse">global IP protection roadmap</span></>}

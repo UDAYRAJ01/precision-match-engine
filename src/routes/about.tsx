@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Section, SectionHeader } from "@/components/site/section";
 import { CtaLink } from "@/components/site/cta";
-import { PageBanner } from "@/components/site/page-banner";
+import { CmsPageBanner } from "@/components/site/cms-page-banner";
 import bannerAbout from "@/assets/banner-about.jpg";
 import sectionTeam from "@/assets/section-about-team.jpg";
 
@@ -20,7 +20,7 @@ export const Route = createFileRoute("/about")({
 function AboutPage() {
   return (
     <>
-      <PageBanner
+      <CmsPageBanner page="about"
         image={bannerAbout}
         eyebrow="Corporate profile & mission"
         title={<>Engineered to give every heart <span className="text-pulse">a second chance at life.</span></>}

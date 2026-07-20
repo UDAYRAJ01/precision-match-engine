@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Section, SectionHeader, DeviceMock } from "@/components/site/section";
 import { CtaLink } from "@/components/site/cta";
-import { PageBanner } from "@/components/site/page-banner";
+import { CmsPageBanner } from "@/components/site/cms-page-banner";
 import bannerHowto from "@/assets/banner-howto.jpg";
 import {
   Power,
@@ -34,7 +34,7 @@ export const Route = createFileRoute("/how-to-use")({
 function HowToUsePage() {
   return (
     <>
-      <PageBanner
+      <CmsPageBanner page="how-to-use"
         image={bannerHowto}
         eyebrow="Quick-start guide"
         title={<>How to use <span className="text-pulse">CPR PRAYAS™</span></>}
