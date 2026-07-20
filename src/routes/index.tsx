@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import { CtaLink } from "@/components/site/cta";
 import heroDevice from "@/assets/hero-banner.jpg";
+import { useCmsContent } from "@/hooks/use-cms";
 import productOne from "@/assets/prayas-device-front.png";
 import productPro from "@/assets/prayas-device-side.png";
 import productConnect from "@/assets/product-connect.jpg";
@@ -33,25 +34,39 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const { get } = useCmsContent("home");
+  const hero = get("hero", {
+    eyebrow: "Clinical Grade MedTech",
+    title: "",
+    subtitle: "Precision metronome, depth feedback, and real-time analytics engineered for professional responders. CPR PRAYAS™ bridges the gap between effort and outcomes.",
+    image: heroDevice,
+  });
   return (
     <div className="container-page space-y-16 py-10 sm:space-y-20 sm:py-16 md:space-y-24 md:py-24">
       {/* Hero */}
       <section className="relative flex flex-col items-center text-center">
         <span className="app-chip">
           <span className="pulse-dot" />
-          Clinical Grade MedTech
+          {hero.eyebrow}
         </span>
 
         <h1 className="h-display mt-6 sm:mt-8">
-          Intelligent CPR
-          <br />
-          <span className="bg-gradient-to-r from-emerald to-pulse bg-clip-text text-transparent">
-            Guidance Systems.
-          </span>
+          {hero.title ? (
+            <span className="bg-gradient-to-r from-emerald to-pulse bg-clip-text text-transparent">
+              {hero.title}
+            </span>
+          ) : (
+            <>
+              Intelligent CPR
+              <br />
+              <span className="bg-gradient-to-r from-emerald to-pulse bg-clip-text text-transparent">
+                Guidance Systems.
+              </span>
+            </>
+          )}
         </h1>
         <p className="text-lede mt-6 max-w-2xl sm:mt-8">
-          Precision metronome, depth feedback, and real-time analytics engineered for
-          professional responders. CPR PRAYAS™ bridges the gap between effort and outcomes.
+          {hero.subtitle}
         </p>
         <div className="mt-8 flex w-full flex-col gap-3 sm:mt-10 sm:w-auto sm:flex-row sm:gap-4">
           <CtaLink to="/how-to-use" className="justify-center shadow-[0_0_28px_color-mix(in_oklch,var(--pulse)_35%,transparent)]">
@@ -62,7 +77,7 @@ function Index() {
         <div className="relative mt-10 w-full max-w-5xl sm:mt-16">
           <div className="pointer-events-none absolute -inset-6 rounded-[3rem] bg-gradient-to-br from-pulse/20 via-transparent to-emerald/20 blur-3xl sm:-inset-8" />
           <img
-            src={heroDevice}
+            src={hero.image}
             alt="CPR PRAYAS™ intelligent guidance device with glowing feedback ring"
             width={1600}
             height={1200}
