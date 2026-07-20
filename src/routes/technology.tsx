@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Section, SectionHeader } from "@/components/site/section";
+import { PageBanner } from "@/components/site/page-banner";
+import bannerTech from "@/assets/banner-technology.jpg";
 
 export const Route = createFileRoute("/technology")({
   head: () => ({
@@ -36,19 +38,12 @@ const SPECS: [string, string, string][] = [
 function TechPage() {
   return (
     <>
-      <Section bordered={false}>
-        <div className="mx-auto max-w-3xl text-center">
-          <span className="eyebrow"><span className="pulse-dot" /> Biomechanical engineering</span>
-          <h1 className="mt-6 font-display text-4xl font-bold tracking-tight sm:text-5xl">
-            Precision sensor architecture &{" "}
-            <span className="text-pulse">real-time algorithmic intelligence</span>
-          </h1>
-          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Multi-sensor hardware arrays fused with embedded microcontrollers deliver
-            zero-latency resuscitation guidance.
-          </p>
-        </div>
-      </Section>
+      <PageBanner
+        image={bannerTech}
+        eyebrow="Biomechanical engineering"
+        title={<>Precision sensor architecture & <span className="text-pulse">real-time algorithmic intelligence</span></>}
+        subtitle="Multi-sensor hardware arrays fused with embedded microcontrollers deliver zero-latency resuscitation guidance."
+      />
 
       <Section surface>
         <SectionHeader eyebrow="Sensor fusion" title="The 4-layer sensing pipeline" subtitle="Isolating true sternal displacement from soft mattress sag." />

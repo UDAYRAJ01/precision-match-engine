@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Section, SectionHeader } from "@/components/site/section";
 import { CtaLink } from "@/components/site/cta";
+import { PageBanner } from "@/components/site/page-banner";
+import bannerPatents from "@/assets/banner-patents.jpg";
 
 export const Route = createFileRoute("/patents")({
   head: () => ({
@@ -23,18 +25,12 @@ const CLAIMS = [
 function PatentsPage() {
   return (
     <>
-      <Section bordered={false}>
-        <div className="mx-auto max-w-3xl text-center">
-          <span className="eyebrow"><span className="pulse-dot" /> MedTech IP portfolio</span>
-          <h1 className="mt-6 font-display text-4xl font-bold tracking-tight sm:text-5xl">
-            Proprietary patent architecture &{" "}
-            <span className="text-pulse">global IP protection roadmap</span>
-          </h1>
-          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Securing core technological innovations across international emergency medicine jurisdictions.
-          </p>
-        </div>
-      </Section>
+      <PageBanner
+        image={bannerPatents}
+        eyebrow="MedTech IP portfolio"
+        title={<>Proprietary patent architecture & <span className="text-pulse">global IP protection roadmap</span></>}
+        subtitle="Securing core technological innovations across international emergency medicine jurisdictions."
+      />
 
       <Section surface>
         <SectionHeader eyebrow="Portfolio" title="Core patent claims" />

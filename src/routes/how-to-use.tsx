@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Section, SectionHeader, DeviceMock } from "@/components/site/section";
 import { CtaLink } from "@/components/site/cta";
+import { PageBanner } from "@/components/site/page-banner";
+import bannerHowto from "@/assets/banner-howto.jpg";
 import {
   Phone,
   Power,
@@ -34,22 +36,16 @@ export const Route = createFileRoute("/how-to-use")({
 function HowToUsePage() {
   return (
     <>
-      {/* HERO */}
+      <PageBanner
+        image={bannerHowto}
+        eyebrow="Quick-start guide"
+        title={<>How to use <span className="text-pulse">CPR PRAYAS™</span></>}
+        subtitle="PRAYAS turns panic into protocol. From the moment you find an unresponsive person to the arrival of professional help, the device guides every compression with voice, light, and haptic feedback."
+      />
       <Section bordered={false}>
-        <div className="mx-auto max-w-3xl text-center">
-          <span className="eyebrow"><span className="pulse-dot" /> Quick-start guide</span>
-          <h1 className="mt-6 font-display text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-            How to use <span className="text-pulse">CPR PRAYAS™</span>
-          </h1>
-          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            PRAYAS turns panic into protocol. From the moment you find an
-            unresponsive person to the arrival of professional help, the device
-            guides every compression with voice, light, and haptic feedback.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <CtaLink to="/contact">Book a hands-on demo</CtaLink>
-            <CtaLink to="/technology" variant="outline">See the technology</CtaLink>
-          </div>
+        <div className="flex flex-wrap justify-center gap-3">
+          <CtaLink to="/contact">Book a hands-on demo</CtaLink>
+          <CtaLink to="/technology" variant="outline">See the technology</CtaLink>
         </div>
       </Section>
 
