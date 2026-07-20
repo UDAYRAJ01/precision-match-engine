@@ -3,6 +3,7 @@ import { Section, SectionHeader } from "@/components/site/section";
 import { CtaLink } from "@/components/site/cta";
 import { PageBanner } from "@/components/site/page-banner";
 import bannerInvestors from "@/assets/banner-investors.jpg";
+import sectionGrowth from "@/assets/section-investors-growth.jpg";
 
 export const Route = createFileRoute("/investors")({
   head: () => ({
@@ -85,6 +86,16 @@ function InvestorsPage() {
             </div>
           </div>
           <div className="rounded-2xl border border-border bg-surface p-6">
+            <div className="mb-5 overflow-hidden rounded-xl border border-border">
+              <img
+                src={sectionGrowth}
+                alt="Growth chart with ECG pulse overlay representing MedTech market expansion"
+                width={1600}
+                height={1000}
+                loading="lazy"
+                className="w-full"
+              />
+            </div>
             {ALLOC.map(([label, pct, color]) => (
               <div key={label} className="flex items-center justify-between border-b border-border py-3 last:border-b-0">
                 <span className="text-sm">{label}</span>
