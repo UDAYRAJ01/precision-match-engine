@@ -112,3 +112,55 @@ export const deleteSection = createServerFn({ method: "POST" })
     if (error) throw error;
     return { ok: true };
   });
+
+export type DemoRequest = {
+  id: string;
+  full_name: string;
+  email: string;
+  organization_type: string;
+  created_at: string;
+};
+
+export const listDemoRequests = createServerFn({ method: "GET" })
+  .handler(async () => {
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { data, error } = await supabaseAdmin
+      .from("demo_requests")
+      .select("*")
+      .order("created_at", { ascending: false })
+      .limit(500);
+    if (error) throw error;
+    return (data ?? []) as unknown as DemoRequest[];
+  });
+
+export const duplicateSection = createServerFn({ method: "POST" })
+  .inputValidator((input: { id: string }) => z.object({ id: z.string().uuid() }).parse(input))
+  .handler(async ({ data }) => {
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { data: src, error: e1 } = await supabaseAdmin
+      .from("page_sections").select("*").eq("id", data.id).single();
+    if (e1 || !src) throw e1 ?? new Error("Not found");
+    const { data: ins, error: e2 } = await supabaseAdmin.from("page_sections").insert({
+      page_slug: src.page_slug,
+      section_key: `${src.section_key}-copy-${Math.random().toString(36).slice(2, 6)}`,
+      section_type: src.section_type,
+      sort_order: src.sort_order + 1,
+      label: src.label ? `${src.label} (copy)` : null,
+      content: src.content as never,
+      published: false,
+      updated_by: null,
+    }).select("*").single();
+    if (e2) throw e2;
+    return ins;
+  });
+
+export const reorderSection = createServerFn({ method: "POST" })
+  .inputValidator((input: { id: string; sort_order: number }) =>
+    z.object({ id: z.string().uuid(), sort_order: z.number().int() }).parse(input))
+  .handler(async ({ data }) => {
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { error } = await supabaseAdmin
+      .from("page_sections").update({ sort_order: data.sort_order }).eq("id", data.id);
+    if (error) throw error;
+    return { ok: true };
+  });
