@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, HeartPulse, ShieldCheck, Wifi, Activity, Waves } from "lucide-react";
 import { CtaLink } from "@/components/site/cta";
-import heroDevice from "@/assets/prayas-device-hero.png";
+import heroDevice from "@/assets/hero-banner.jpg";
 import productOne from "@/assets/prayas-device-front.png";
 import productPro from "@/assets/prayas-device-side.png";
 import productConnect from "@/assets/product-connect.jpg";
