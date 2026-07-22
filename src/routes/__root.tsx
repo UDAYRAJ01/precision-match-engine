@@ -16,6 +16,7 @@ import "@fontsource-variable/dm-sans";
 import { SiteHeader } from "@/components/site/site-header";
 import { SiteFooter } from "@/components/site/site-footer";
 import { StickyCta } from "@/components/site/sticky-cta";
+import { InstallAppPopup } from "@/components/site/install-app-popup";
 import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
@@ -105,6 +106,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "theme-color", content: "#0c2340" },
+      { name: "apple-mobile-web-app-capable", content: "yes" },
+      { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
+      { name: "apple-mobile-web-app-title", content: "PRAYAS" },
     ],
     links: [
       {
@@ -112,6 +117,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "manifest", href: "/manifest.webmanifest" },
+      { rel: "apple-touch-icon", href: "/app-icon-192.png" },
     ],
   }),
   shellComponent: RootShell,
@@ -145,6 +152,7 @@ function RootComponent() {
       </main>
       <SiteFooter />
       <StickyCta />
+      <InstallAppPopup />
       <Toaster richColors position="top-center" />
     </QueryClientProvider>
   );
