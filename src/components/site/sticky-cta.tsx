@@ -1,9 +1,9 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Home, Package, Building2, PhoneCall, BookOpen } from "lucide-react";
+import { Home, Package, Layers, PhoneCall, BookOpen } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Tab = {
-  to: "/" | "/products" | "/hotels" | "/contact" | "/how-to-use";
+  to: "/" | "/products" | "/applications" | "/contact" | "/how-to-use";
   label: string;
   icon: typeof Home;
   exact?: boolean;
@@ -13,7 +13,7 @@ type Tab = {
 const TABS: Tab[] = [
   { to: "/", label: "Home", icon: Home, exact: true },
   { to: "/products", label: "Products", icon: Package },
-  { to: "/hotels", label: "Hotels", icon: Building2 },
+  { to: "/applications", label: "Applications", icon: Layers },
   { to: "/contact", label: "Demo", icon: PhoneCall },
   { to: "/how-to-use", label: "How to Use", icon: BookOpen, primary: true },
 ];
