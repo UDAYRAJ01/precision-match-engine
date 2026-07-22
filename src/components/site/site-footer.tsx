@@ -45,7 +45,11 @@ export function SiteFooter() {
       <div className="border-t border-border">
         <div className="container-page flex flex-col justify-between gap-3 py-6 text-xs text-muted-foreground md:flex-row">
           <p>© {new Date().getFullYear()} CPR PRAYAS™ MedTech. All rights reserved.</p>
-          <p>Kanpur, India · contact@cprprayas.com</p>
+          <div className="flex items-center gap-4">
+            <Link to="/admin" className="hover:text-ink">Admin</Link>
+            <span className="hidden text-border md:inline">|</span>
+            <p className="hidden md:inline">Kanpur, India · contact@cprprayas.com</p>
+          </div>
         </div>
       </div>
     </footer>
