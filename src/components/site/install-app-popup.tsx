@@ -36,6 +36,20 @@ export function InstallAppPopup() {
     if (typeof window === "undefined") return;
     if (isStandalone()) return;
 
+    // Register service worker only on the real published site (not Lovable preview / iframe / dev).
+    const host = window.location.hostname;
+    const inIframe = window.self !== window.top;
+    const isPreview =
+      !import.meta.env.PROD ||
+      inIframe ||
+      host.startsWith("id-preview--") ||
+      host.startsWith("preview--") ||
+      host.endsWith(".lovableproject.com") ||
+      host.endsWith(".lovableproject-dev.com");
+    if (!isPreview && "serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/sw.js").catch(() => {});
+    }
+
     const last = Number(localStorage.getItem(DISMISS_KEY) || 0);
     if (last && Date.now() - last < REMIND_AFTER_MS) return;
 
