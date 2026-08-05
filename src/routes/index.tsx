@@ -5,7 +5,6 @@ import {
   ShieldCheck,
   Wifi,
   Activity,
-  Waves,
   AlertTriangle,
   Timer,
   TrendingDown,
@@ -21,6 +20,13 @@ import {
   Hotel,
   Quote,
   CheckCircle2,
+  Play,
+  Layers,
+  Droplets,
+  Users,
+  Stethoscope,
+  Ambulance,
+  Briefcase,
 } from "lucide-react";
 import { CtaLink } from "@/components/site/cta";
 import heroDevice from "@/assets/hero-banner.jpg";
@@ -36,11 +42,14 @@ export const Route = createFileRoute("/")({
 function Index() {
   const { get } = useCmsContent("home");
   const hero = get("hero", {
-    eyebrow: "Clinical Grade MedTech",
-    title: "",
-    subtitle: "Precision metronome, depth feedback, and real-time analytics engineered for professional responders. CPR PRAYAS™ bridges the gap between effort and outcomes.",
+    eyebrow: "Smart CPR Guidance Device",
+    title: "CPR PRAYAS™",
+    subtitle: "A Smart Device That Helps Save Lives During Cardiac Arrest",
+    description:
+      "When someone's heart suddenly stops, every second matters. CPR PRAYAS™ guides you step by step to perform the right CPR with voice instructions, light signals, and vibration feedback—so even in a stressful situation, you can give better CPR until medical help arrives.",
     image: heroDevice,
   });
+
   return (
     <div className="container-page space-y-16 py-10 sm:space-y-20 sm:py-16 md:space-y-24 md:py-24">
       {/* Hero */}
@@ -65,16 +74,34 @@ function Index() {
             </>
           )}
         </h1>
-        <p className="text-lede order-4 mt-6 max-w-2xl sm:order-3 sm:mt-8">
+
+        <p className="text-lede order-4 mt-6 max-w-3xl sm:order-3 sm:mt-8">
           {hero.subtitle}
         </p>
-        <div className="order-5 mt-8 flex w-full flex-col gap-3 sm:order-4 sm:mt-10 sm:w-auto sm:flex-row sm:gap-4">
-          <CtaLink to="/how-to-use" className="justify-center shadow-[0_0_28px_color-mix(in_oklch,var(--pulse)_35%,transparent)]">
-            How to use <ArrowRight className="h-4 w-4" />
+
+        {hero.description && (
+          <p className="order-5 mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground sm:order-4">
+            {hero.description}
+          </p>
+        )}
+
+        <div className="order-6 mt-8 flex w-full flex-col gap-3 sm:order-5 sm:mt-10 sm:w-auto sm:flex-row sm:gap-4">
+          <CtaLink
+            to="/how-to-use"
+            className="justify-center shadow-[0_0_28px_color-mix(in_oklch,var(--pulse)_35%,transparent)]"
+          >
+            <Play className="h-4 w-4" /> Watch How It Works
           </CtaLink>
-          <CtaLink to="/products" variant="outline" className="justify-center">View products</CtaLink>
+          <CtaLink
+            to="/products"
+            variant="outline"
+            className="justify-center"
+          >
+            View Products
+          </CtaLink>
         </div>
-        <div className="relative order-2 mt-6 w-full max-w-5xl sm:order-5 sm:mt-16">
+
+        <div className="relative order-2 mt-6 w-full max-w-5xl sm:order-6 sm:mt-16">
           <div className="pointer-events-none absolute -inset-6 rounded-[3rem] bg-gradient-to-br from-pulse/20 via-transparent to-emerald/20 blur-3xl sm:-inset-8" />
           <img
             src={hero.image}
@@ -86,17 +113,38 @@ function Index() {
         </div>
       </section>
 
-      {/* Impact strip */}
+      {/* Every Minute Counts */}
       <section className="app-card grid grid-cols-2 gap-3 p-4 sm:gap-4 sm:p-6 md:grid-cols-4 md:p-8">
         {[
-          { k: "700K+", v: "SCA deaths / year in India", i: AlertTriangle },
-          { k: "< 10%", v: "Out-of-hospital survival today", i: TrendingDown },
-          { k: "2–3×", v: "Survival with quality CPR", i: HeartPulse },
-          { k: "< 4 min", v: "Window to prevent brain damage", i: Timer },
+          {
+            k: "700,000+",
+            v: "People die from Sudden Cardiac Arrest every year in India.",
+            i: AlertTriangle,
+          },
+          {
+            k: "Less than 10%",
+            v: "People survive when CPR is delayed.",
+            i: TrendingDown,
+          },
+          {
+            k: "2–3 Times",
+            v: "Better chances with good quality CPR.",
+            i: HeartPulse,
+          },
+          {
+            k: "Within 4 Minutes",
+            v: "The brain starts getting damaged if blood flow doesn't return.",
+            i: Timer,
+          },
         ].map(({ k, v, i: Icon }) => (
-          <div key={v} className="flex flex-col items-start gap-1.5 rounded-2xl bg-background/30 p-3 sm:gap-2 sm:bg-transparent sm:p-0">
+          <div
+            key={v}
+            className="flex flex-col items-start gap-1.5 rounded-2xl bg-background/30 p-3 sm:gap-2 sm:bg-transparent sm:p-0"
+          >
             <Icon className="h-4 w-4 text-pulse sm:h-5 sm:w-5" />
-            <div className="font-display text-xl font-bold sm:text-2xl md:text-3xl">{k}</div>
+            <div className="font-display text-xl font-bold sm:text-2xl md:text-3xl">
+              {k}
+            </div>
             <div className="text-[0.65rem] font-medium uppercase leading-snug tracking-wider text-muted-foreground sm:text-xs">
               {v}
             </div>
@@ -104,226 +152,320 @@ function Index() {
         ))}
       </section>
 
-      {/* The Problem */}
+      {/* Why Is This Needed */}
       <section className="grid gap-10 md:grid-cols-12 md:items-center">
         <div className="md:col-span-5">
-          <span className="eyebrow"><span className="pulse-dot" /> The problem</span>
+          <span className="eyebrow">
+            <span className="pulse-dot" /> Why Is This Needed?
+          </span>
           <h2 className="h-section mt-4">
-            Every second without a heartbeat costs a life.
+            When someone suddenly collapses because of cardiac arrest, most
+            people don't know what to do.
           </h2>
           <p className="text-lede mt-5">
-            Sudden Cardiac Arrest strikes without warning — in homes, offices,
-            gyms and public spaces. Bystanders panic, compressions are too
-            shallow or too slow, and survival drops 10% every minute help is
-            delayed.
+            People panic. CPR is often done incorrectly. Emergency teams don't
+            know what happened before they arrive. That's why CPR PRAYAS™ was
+            created.
           </p>
         </div>
         <div className="grid gap-3 sm:gap-4 md:col-span-7 md:grid-cols-2">
           {[
             {
-              t: "Untrained bystanders freeze",
-              d: "Fewer than 2 in 10 SCA victims receive any bystander CPR.",
+              t: "Most people don't know CPR",
+              d: "Many people want to help but don't know how.",
+              i: Users,
             },
             {
-              t: "Compressions are poor quality",
-              d: "Depth, rate and recoil rarely meet AHA guidelines without feedback.",
+              t: "CPR is often done incorrectly",
+              d: "Pressing too fast, too slow, too hard or too softly reduces the chances of survival.",
+              i: Activity,
             },
             {
-              t: "No data reaches clinicians",
-              d: "Emergency teams arrive blind — no record of what happened.",
+              t: "Doctors don't know what happened",
+              d: "There is usually no record of CPR before the ambulance arrives.",
+              i: Stethoscope,
             },
             {
-              t: "AEDs alone aren't enough",
-              d: "AEDs shock rhythms; only continuous quality CPR keeps blood flowing.",
+              t: "AED alone is not enough",
+              d: "An AED helps only in certain situations. Continuous, good-quality CPR is still the most important part of saving a life.",
+              i: HeartPulse,
             },
           ].map((p) => (
             <div key={p.t} className="app-card p-5 sm:p-6">
-              <h3 className="h-card text-ink">{p.t}</h3>
-              <p className="mt-2 text-[0.9rem] leading-relaxed text-muted-foreground">{p.d}</p>
+              <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-pulse/12 text-pulse">
+                <p.i className="h-5 w-5" />
+              </div>
+              <h3 className="h-card mt-4 text-ink">{p.t}</h3>
+              <p className="mt-2 text-[0.9rem] leading-relaxed text-muted-foreground">
+                {p.d}
+              </p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* How it works */}
+      {/* How CPR PRAYAS™ Works */}
       <section>
         <div className="mx-auto max-w-2xl text-center">
-          <span className="eyebrow-emerald">How it works</span>
-          <h2 className="h-section mt-4">
-            From panic to protocol in seconds.
-          </h2>
+          <span className="eyebrow-emerald">How It Works</span>
+          <h2 className="h-section mt-4">How CPR PRAYAS™ Works</h2>
           <p className="text-lede mt-4">
-            One-button activation. Multi-sensory guidance. Automatic reporting.
+            Simple steps that guide anyone to give better CPR when every second
+            counts.
           </p>
         </div>
-        <ol className="mt-10 grid gap-4 sm:gap-6 sm:grid-cols-2 md:mt-14 md:grid-cols-4">
+        <ol className="mt-10 grid gap-4 sm:grid-cols-2 sm:gap-6 md:mt-14 md:grid-cols-4">
           {[
-            { n: "01", t: "Grab & place", d: "Snap PRAYAS onto the chest — the contour locks correct hand position.", i: HeartPulse },
-            { n: "02", t: "Power on", d: "One press starts a real-time metronome and voice coaching.", i: Volume2 },
-            { n: "03", t: "Compress with feedback", d: "LED ring, haptics and voice keep depth 5–6 cm and rate 100–120/min.", i: Gauge },
-            { n: "04", t: "Auto-report", d: "Session syncs to Connect — PDF debrief and compliance log.", i: CloudUpload },
+            {
+              n: "Step 1",
+              t: "Place the Device",
+              d: "Simply place PRAYAS™ on the person's chest where instructed.",
+              i: HeartPulse,
+            },
+            {
+              n: "Step 2",
+              t: "Press the Power Button",
+              d: "The device immediately starts giving voice instructions and a CPR rhythm.",
+              i: Volume2,
+            },
+            {
+              n: "Step 3",
+              t: "Follow the Guidance",
+              d: "The lights, voice and vibration tell you how fast and how deep to press. You don't have to guess.",
+              i: Gauge,
+            },
+            {
+              n: "Step 4",
+              t: "Save the Report",
+              d: "After CPR, the session is automatically saved so hospitals and trainers can review it later.",
+              i: CloudUpload,
+            },
           ].map(({ n, t, d, i: Icon }) => (
             <li key={n} className="app-card p-5 sm:p-6 md:p-7">
               <div className="flex items-center justify-between">
-                <span className="font-display text-sm font-bold tracking-widest text-pulse">{n}</span>
+                <span className="font-display text-sm font-bold tracking-widest text-pulse">
+                  {n}
+                </span>
                 <Icon className="h-5 w-5 text-pulse" />
               </div>
               <h3 className="h-card mt-5">{t}</h3>
-              <p className="mt-2 text-[0.9rem] leading-relaxed text-muted-foreground">{d}</p>
+              <p className="mt-2 text-[0.9rem] leading-relaxed text-muted-foreground">
+                {d}
+              </p>
             </li>
           ))}
         </ol>
-        <div className="mt-10 flex justify-center">
-          <CtaLink to="/how-to-use" variant="outline">Full step-by-step guide <ArrowRight className="h-4 w-4" /></CtaLink>
+      </section>
+
+      {/* Meet the Products */}
+      <section>
+        <div className="mx-auto max-w-2xl text-center">
+          <span className="eyebrow">
+            <span className="pulse-dot" /> Our Products
+          </span>
+          <h2 className="h-section mt-4">Meet the Products</h2>
+        </div>
+        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-12">
+          {/* PRAYAS ONE */}
+          <div className="group relative overflow-hidden rounded-3xl border border-border bg-surface/60 p-8 md:col-span-7">
+            <div className="relative z-10">
+              <div className="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-widest text-pulse">
+                <HeartPulse className="h-4 w-4" /> CPR PRAYAS™ ONE
+              </div>
+              <h3 className="mt-3 font-display text-3xl font-bold">
+                Compact CPR Guidance Device
+              </h3>
+              <p className="mt-4 max-w-md text-muted-foreground">
+                A compact CPR guidance device for hospitals, ambulances, offices,
+                schools and public places.
+              </p>
+              <ul className="mt-5 space-y-2 text-sm text-muted-foreground">
+                {[
+                  "Voice guidance",
+                  "CPR rhythm",
+                  "Compression feedback",
+                  "Easy one-button operation",
+                  "Portable design",
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-emerald" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <CtaLink to="/products" variant="outline" className="mt-6">
+                Learn More
+              </CtaLink>
+            </div>
+            <img
+              src={productOne}
+              alt="CPR PRAYAS™ One pocket device"
+              loading="lazy"
+              width={1200}
+              height={1200}
+              className="pointer-events-none absolute -bottom-8 -right-8 h-56 w-56 rounded-3xl object-cover opacity-90 shadow-xl md:h-64 md:w-64"
+            />
+          </div>
+
+          {/* PRAYAS PRO */}
+          <div className="relative flex flex-col justify-between overflow-hidden rounded-3xl border border-border bg-surface/60 md:col-span-5">
+            <img
+              src={productPro}
+              alt="CPR PRAYAS™ Pro clinical device"
+              loading="lazy"
+              width={1200}
+              height={1200}
+              className="h-48 w-full object-cover"
+            />
+            <div className="p-8">
+              <div className="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-widest text-pulse">
+                <ShieldCheck className="h-4 w-4" /> CPR PRAYAS™ PRO
+              </div>
+              <h3 className="mt-3 font-display text-3xl font-bold">
+                For Professionals
+              </h3>
+              <p className="mt-4 text-muted-foreground">
+                Designed for hospitals, emergency teams and ambulance services.
+              </p>
+              <ul className="mt-5 space-y-2 text-sm text-muted-foreground">
+                {[
+                  "Live monitoring",
+                  "Team management",
+                  "Advanced reporting",
+                  "Multi-device support",
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-emerald" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* PRAYAS CONNECT */}
+          <div className="relative overflow-hidden rounded-3xl bg-pulse p-8 text-pulse-foreground md:col-span-12">
+            <div className="relative z-10 grid gap-8 md:grid-cols-2 md:items-center">
+              <div>
+                <div className="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-widest opacity-80">
+                  <Wifi className="h-4 w-4" /> CPR PRAYAS™ CONNECT
+                </div>
+                <h3 className="mt-3 font-display text-3xl font-bold">
+                  Cloud Platform
+                </h3>
+                <p className="mt-4 font-medium">
+                  A cloud platform that stores CPR sessions and creates automatic
+                  reports for hospitals and organizations.
+                </p>
+                <CtaLink to="/products" variant="outline" className="mt-6">
+                  Explore Products
+                </CtaLink>
+              </div>
+              <img
+                src={productConnect}
+                alt="CPR PRAYAS™ Connect app"
+                loading="lazy"
+                width={1200}
+                height={1200}
+                className="pointer-events-none h-56 w-full rounded-3xl object-cover opacity-60 mix-blend-luminosity md:h-64"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Bento grid */}
-      <section className="grid grid-cols-1 gap-6 md:grid-cols-12">
-        {/* PRAYAS ONE — large */}
-        <div className="group relative overflow-hidden rounded-3xl border border-border bg-surface/60 p-8 md:col-span-8">
-          <div className="relative z-10">
-            <div className="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-widest text-pulse">
-              <HeartPulse className="h-4 w-4" /> PRAYAS ONE
-            </div>
-            <h3 className="mt-3 font-display text-3xl font-bold">The Core Guidance Device</h3>
-            <p className="mt-4 max-w-md text-muted-foreground">
-              Single-responder pocket device with high-fidelity haptic feedback, 110 BPM
-              metronome, and visual depth indicators. IP67, defibrillator-safe.
-            </p>
-            <CtaLink to="/products" variant="outline" className="mt-6">Learn more</CtaLink>
-          </div>
-          <img
-            src={productOne}
-            alt="CPR PRAYAS™ One pocket device"
-            loading="lazy"
-            width={1200}
-            height={1200}
-            className="pointer-events-none absolute -bottom-8 -right-8 h-64 w-64 rounded-3xl object-cover opacity-90 shadow-xl md:h-72 md:w-72"
-          />
-        </div>
-
-        {/* PRO */}
-        <div className="relative flex flex-col justify-between overflow-hidden rounded-3xl border border-border bg-surface/60 md:col-span-4">
-          <img
-            src={productPro}
-            alt="CPR PRAYAS™ Pro clinical device"
-            loading="lazy"
-            width={1200}
-            height={1200}
-            className="h-48 w-full object-cover"
-          />
-          <div className="p-8">
-            <div className="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-widest text-pulse">
-              <ShieldCheck className="h-4 w-4" /> PRO
-            </div>
-            <h3 className="mt-3 font-display text-3xl font-bold">Enterprise Fleet</h3>
-            <p className="mt-4 text-muted-foreground">
-              Centralized management for hospital departments, Code Blue teams, and EMS
-              services with 360° LED rings and live telemetry.
-            </p>
-          </div>
-        </div>
-
-        {/* CONNECT — inverted card */}
-        <div className="relative overflow-hidden rounded-3xl bg-pulse p-8 text-pulse-foreground md:col-span-4">
-          <div className="relative z-10">
-            <div className="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-widest opacity-80">
-              <Wifi className="h-4 w-4" /> CONNECT
-            </div>
-            <h3 className="mt-3 font-display text-3xl font-bold">Cloud Analytics</h3>
-            <p className="mt-4 font-medium">
-              Post-event debriefing with automated PDF reporting and AHA 2025
-              compliance tracking across your entire fleet.
-            </p>
-          </div>
-          <img
-            src={productConnect}
-            alt="CPR PRAYAS™ Connect app"
-            loading="lazy"
-            width={1200}
-            height={1200}
-            className="pointer-events-none absolute -bottom-10 -right-10 h-52 w-52 rounded-3xl object-cover opacity-30 mix-blend-luminosity"
-          />
-        </div>
-
-        {/* Clinical Accuracy */}
-        <div className="flex flex-col items-center gap-8 rounded-3xl border border-border bg-gradient-to-br from-surface to-background p-8 md:col-span-8 md:flex-row">
-          <div className="flex-1">
-            <div className="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-widest text-pulse">
-              <Waves className="h-4 w-4" /> CLINICAL ACCURACY
-            </div>
-            <h3 className="mt-3 font-display text-3xl font-bold">Validated to gold standard</h3>
-            <p className="mt-4 text-muted-foreground">
-              Validated against gold-standard manikins with ±2 mm depth precision and
-              sub-millisecond rhythm tracking across rigid floors and hospital mattresses.
-            </p>
-          </div>
-          <div className="grid w-full grid-cols-2 gap-4 md:w-auto">
-            <div className="rounded-2xl border border-border bg-background/50 p-6">
-              <div className="font-display text-3xl font-bold text-pulse">98%</div>
-              <div className="mt-1 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                Accuracy
-              </div>
-            </div>
-            <div className="rounded-2xl border border-border bg-background/50 p-6">
-              <div className="font-display text-3xl font-bold text-pulse">2.5×</div>
-              <div className="mt-1 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                Survival ↑
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Feature grid */}
+      {/* Why Choose CPR PRAYAS™ */}
       <section>
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-xl">
-            <span className="eyebrow"><span className="pulse-dot" /> What's inside</span>
-            <h2 className="h-section mt-4">
-              Engineered for the worst 10 minutes of someone's life.
-            </h2>
+            <span className="eyebrow">
+              <span className="pulse-dot" /> Why Choose Us
+            </span>
+            <h2 className="h-section mt-4">Why Choose CPR PRAYAS™?</h2>
           </div>
           <p className="text-lede max-w-md">
-            Every subsystem is designed for reliability under stress — resistant
-            to sweat, blood, tremor and untrained hands.
+            Built to turn bystanders into confident responders and help teams
+            perform better CPR.
           </p>
         </div>
-        <div className="mt-8 grid gap-3 sm:gap-4 sm:grid-cols-2 md:mt-10 md:grid-cols-3">
+        <div className="mt-8 grid gap-3 sm:grid-cols-2 sm:gap-4 md:mt-10 md:grid-cols-3">
           {[
-            { i: Gauge, t: "±1 mm depth precision", d: "Load-cell + IMU fusion tracks every compression to sub-millimeter accuracy." },
-            { i: Volume2, t: "Trilingual voice coach", d: "English, Hindi and regional prompts guide untrained bystanders through every step." },
-            { i: Radio, t: "Bluetooth 5.3 + LTE-M", d: "Streams live telemetry to Connect and to arriving EMS teams." },
-            { i: BatteryCharging, t: "12-month standby", d: "USB-C, defibrillator-safe and IP67 rated for any deployment." },
-            { i: ShieldCheck, t: "AHA 2025 aligned", d: "Depth, rate, recoil and fraction targets validated against the latest guidelines." },
-            { i: GraduationCap, t: "Built-in training mode", d: "Simulated cycles with scoring — turn every fire drill into CPR practice." },
+            {
+              i: Gauge,
+              t: "Helps You Perform Better CPR",
+              d: "Guides you through every compression.",
+            },
+            {
+              i: Volume2,
+              t: "Easy Voice Instructions",
+              d: "Available in English, Hindi and regional languages.",
+            },
+            {
+              i: Building2,
+              t: "Works Anywhere",
+              d: "Suitable for hospitals, schools, hotels, offices, factories and public places.",
+            },
+            {
+              i: BatteryCharging,
+              t: "Long Battery Life",
+              d: "Ready whenever an emergency happens.",
+            },
+            {
+              i: Droplets,
+              t: "Built for Real Emergencies",
+              d: "Water resistant, durable and safe to use with AEDs.",
+            },
+            {
+              i: GraduationCap,
+              t: "Practice Anytime",
+              d: "Training mode helps staff and students learn CPR with confidence.",
+            },
           ].map(({ i: Icon, t, d }) => (
             <div key={t} className="app-card p-5 sm:p-6">
               <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-pulse/12 text-pulse">
                 <Icon className="h-5 w-5" />
               </div>
               <h3 className="h-card mt-4">{t}</h3>
-              <p className="mt-2 text-[0.9rem] leading-relaxed text-muted-foreground">{d}</p>
+              <p className="mt-2 text-[0.9rem] leading-relaxed text-muted-foreground">
+                {d}
+              </p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Who it's for */}
+      {/* Where Can It Be Used */}
       <section>
         <div className="mx-auto max-w-2xl text-center">
-          <span className="eyebrow-emerald">Built for every environment</span>
-          <h2 className="h-section mt-4">
-            Wherever hearts stop, PRAYAS belongs.
-          </h2>
+          <span className="eyebrow-emerald">Applications</span>
+          <h2 className="h-section mt-4">Where Can It Be Used?</h2>
         </div>
-        <div className="mt-8 grid gap-3 sm:gap-4 sm:grid-cols-2 md:mt-12 md:grid-cols-4">
+        <div className="mt-8 grid gap-3 sm:grid-cols-2 sm:gap-4 md:mt-12 md:grid-cols-4">
           {[
-            { i: Building2, t: "Hospitals & EMS", d: "Code Blue teams, ambulances, ICUs." , to: "/applications" as const },
-            { i: Hotel, t: "Hotels & venues", d: "Guest safety, staff readiness, brand trust.", to: "/hotels" as const },
-            { i: School, t: "Schools & campuses", d: "Sports fields, dorms, staff rooms.", to: "/applications" as const },
-            { i: Plane, t: "Transit & aviation", d: "Airports, metros, long-haul flights.", to: "/applications" as const },
+            {
+              i: Building2,
+              t: "Hospitals & Ambulances",
+              d: "Support doctors, nurses and emergency teams during CPR.",
+              to: "/applications" as const,
+            },
+            {
+              i: Hotel,
+              t: "Hotels & Corporate Offices",
+              d: "Protect guests and employees during medical emergencies.",
+              to: "/hotels" as const,
+            },
+            {
+              i: School,
+              t: "Schools & Colleges",
+              d: "Improve campus safety for students, teachers and sports events.",
+              to: "/applications" as const,
+            },
+            {
+              i: Plane,
+              t: "Airports, Metro & Public Transport",
+              d: "Be prepared for emergencies in crowded public spaces.",
+              to: "/applications" as const,
+            },
           ].map(({ i: Icon, t, d, to }) => (
             <Link
               key={t}
@@ -334,9 +476,12 @@ function Index() {
                 <Icon className="h-5 w-5" />
               </div>
               <h3 className="h-card mt-4">{t}</h3>
-              <p className="mt-2 text-[0.9rem] leading-relaxed text-muted-foreground">{d}</p>
+              <p className="mt-2 text-[0.9rem] leading-relaxed text-muted-foreground">
+                {d}
+              </p>
               <span className="mt-5 inline-flex items-center gap-1 text-[0.7rem] font-semibold uppercase tracking-widest text-pulse">
-                Explore <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
+                Explore{" "}
+                <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
               </span>
             </Link>
           ))}
@@ -346,115 +491,131 @@ function Index() {
       {/* Testimonials */}
       <section>
         <div className="mx-auto max-w-2xl text-center">
-          <span className="eyebrow"><span className="pulse-dot" /> What clinicians say</span>
+          <span className="eyebrow">
+            <span className="pulse-dot" /> Testimonials
+          </span>
           <h2 className="mt-5 font-display text-4xl font-bold tracking-tight md:text-5xl">
-            Trusted by teams who cannot afford to miss.
+            What Our Users Say
           </h2>
         </div>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {[
             {
-              q: "PRAYAS turned our Code Blue drills into measurable science. Every compression is now logged.",
+              q: "Our emergency team performs CPR with much more confidence now.",
               n: "Dr. Anjali Mehta",
-              r: "Head of Emergency Medicine",
+              r: "Emergency Physician",
             },
             {
-              q: "Our front-desk staff went from nervous to confident in a single training session with the device.",
+              q: "Even staff with no medical background learned CPR much faster.",
               n: "Rohan Kapoor",
-              r: "GM, 5-star hotel group",
+              r: "Hotel General Manager",
             },
             {
-              q: "The best resuscitation coach we've deployed on ambulances. Data-driven and utterly reliable.",
+              q: "A simple device that makes a big difference during emergencies.",
               n: "Sameer Iyer",
-              r: "Director, Urban EMS",
+              r: "EMS Director",
             },
           ].map((t) => (
-            <figure key={t.n} className="flex h-full flex-col rounded-3xl border border-border bg-surface/50 p-8">
+            <figure
+              key={t.n}
+              className="flex h-full flex-col rounded-3xl border border-border bg-surface/50 p-8"
+            >
               <Quote className="h-6 w-6 text-pulse" />
-              <blockquote className="mt-4 text-base leading-relaxed text-ink">"{t.q}"</blockquote>
+              <blockquote className="mt-4 text-base leading-relaxed text-ink">
+                "{t.q}"
+              </blockquote>
               <figcaption className="mt-auto pt-6">
                 <div className="font-display font-semibold">{t.n}</div>
-                <div className="text-xs uppercase tracking-widest text-muted-foreground">{t.r}</div>
+                <div className="text-xs uppercase tracking-widest text-muted-foreground">
+                  {t.r}
+                </div>
               </figcaption>
             </figure>
           ))}
         </div>
       </section>
 
-      {/* FAQ preview */}
+      {/* FAQ */}
       <section className="grid gap-10 md:grid-cols-12">
         <div className="md:col-span-5">
-          <span className="eyebrow-emerald">Questions we hear</span>
+          <span className="eyebrow-emerald">FAQ</span>
           <h2 className="mt-5 font-display text-4xl font-bold tracking-tight md:text-5xl">
-            Straight answers before you deploy.
+            Frequently Asked Questions
           </h2>
           <p className="mt-6 text-muted-foreground">
-            More on procurement, service, and clinical validation on the FAQ page.
+            Quick answers to common questions. Read the full FAQ for more
+            details.
           </p>
-          <CtaLink to="/faq" variant="outline" className="mt-6">Read the full FAQ</CtaLink>
+          <CtaLink to="/faq" variant="outline" className="mt-6">
+            Read Full FAQ
+          </CtaLink>
         </div>
         <div className="space-y-3 md:col-span-7">
           {[
-            { q: "Do untrained bystanders really use it correctly?", a: "Yes. Voice + LED + haptics coach depth and rate; no CPR training required." },
-            { q: "Is it safe with an AED?", a: "PRAYAS is defibrillator-safe and pauses guidance automatically during shock delivery." },
-            { q: "How is data protected?", a: "Sessions are encrypted end-to-end and stored on ISO 27001 compliant infrastructure." },
-            { q: "What's the maintenance overhead?", a: "USB-C monthly top-up, quarterly visual inspection. Self-test runs on every power-on." },
+            {
+              q: "Can someone without CPR training use it?",
+              a: "Yes. The device gives simple voice instructions throughout the CPR process.",
+            },
+            {
+              q: "Can it be used with an AED?",
+              a: "Yes. It is designed to work safely alongside AEDs.",
+            },
+            {
+              q: "Is the data secure?",
+              a: "Yes. All reports are stored securely.",
+            },
+            {
+              q: "Does it require regular maintenance?",
+              a: "Very little. It is designed for easy maintenance and long-term use.",
+            },
           ].map((f) => (
-            <details key={f.q} className="group rounded-2xl border border-border bg-surface/50 p-5 open:bg-surface">
+            <details
+              key={f.q}
+              className="group rounded-2xl border border-border bg-surface/50 p-5 open:bg-surface"
+            >
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4">
-                <span className="font-display text-base font-semibold text-ink">{f.q}</span>
+                <span className="font-display text-base font-semibold text-ink">
+                  {f.q}
+                </span>
                 <CheckCircle2 className="h-5 w-5 shrink-0 text-pulse transition-transform group-open:rotate-45" />
               </summary>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{f.a}</p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                {f.a}
+              </p>
             </details>
           ))}
         </div>
       </section>
 
-      {/* Newsroom / momentum */}
+      {/* Trusted By */}
       <section className="rounded-3xl border border-border bg-gradient-to-br from-surface to-background p-8 md:p-12">
-        <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
-          <div>
-            <span className="eyebrow"><span className="pulse-dot" /> Momentum</span>
-            <h2 className="mt-5 font-display text-3xl font-bold tracking-tight md:text-4xl">
-              Backed by clinicians, engineers and institutions.
-            </h2>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            <CtaLink to="/clinical-validation" variant="outline">Clinical validation</CtaLink>
-            <CtaLink to="/patents" variant="outline">IP & patents</CtaLink>
-            <CtaLink to="/investors" variant="outline">Investors</CtaLink>
-          </div>
+        <div className="text-center">
+          <span className="eyebrow">
+            <span className="pulse-dot" /> Trusted By
+          </span>
+          <h2 className="mt-5 font-display text-3xl font-bold tracking-tight md:text-4xl">
+            Trusted by Experts and Institutions
+          </h2>
         </div>
-        <div className="mt-10 grid grid-cols-2 gap-6 md:grid-cols-4">
+        <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-5">
           {[
-            { k: "R² = 0.984", v: "vs gold-standard manikin" },
-            { k: "3 patents", v: "filed & pending" },
-            { k: "AHA 2025", v: "guideline aligned" },
-            { k: "IIT + BIRAC", v: "incubated & supported" },
-          ].map((s) => (
-            <div key={s.v} className="rounded-2xl border border-border bg-background/60 p-5">
-              <div className="font-display text-xl font-bold text-pulse md:text-2xl">{s.k}</div>
-              <div className="mt-1 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                {s.v}
+            { t: "Clinical Experts", i: Stethoscope },
+            { t: "Research Institutions", i: GraduationCap },
+            { t: "Hospitals", i: Building2 },
+            { t: "Emergency Response Teams", i: Ambulance },
+            { t: "MedTech Innovation Programs", i: Briefcase },
+          ].map(({ t, i: Icon }) => (
+            <div
+              key={t}
+              className="flex flex-col items-center gap-3 rounded-2xl border border-border bg-background/60 p-5 text-center"
+            >
+              <Icon className="h-6 w-6 text-pulse" />
+              <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                {t}
               </div>
             </div>
           ))}
         </div>
-      </section>
-
-      {/* Trust bar */}
-      <section className="grid grid-cols-2 gap-6 rounded-3xl border border-border bg-surface/40 p-8 text-center md:grid-cols-4">
-        {[
-          "AHA 2025 Aligned",
-          "ISO 13485",
-          "BIRAC Supported",
-          "IIT MedTech Incubation",
-        ].map((l) => (
-          <div key={l} className="font-display text-sm font-semibold uppercase tracking-widest text-muted-foreground">
-            {l}
-          </div>
-        ))}
       </section>
 
       {/* CTA band */}
@@ -466,20 +627,25 @@ function Index() {
             <div className="mb-4 inline-flex items-center gap-2">
               <Activity className="h-5 w-5 text-pulse" />
               <span className="font-display text-xs font-bold uppercase tracking-widest text-pulse">
-                Institutional deployment
+                Ready to Save More Lives?
               </span>
             </div>
             <h2 className="font-display text-4xl font-bold md:text-5xl">
-              Ready to modernize your emergency response?
+              Whether you're a hospital, school, hotel, office, factory or
+              emergency service.
             </h2>
             <p className="mt-6 text-lg text-muted-foreground">
-              Join leading hospitals, school districts, hotel groups, and transit networks
-              using CPR PRAYAS™ to save lives through data-driven resuscitation.
+              CPR PRAYAS™ helps your team respond faster and perform better CPR
+              when every second matters.
             </p>
           </div>
           <div className="flex shrink-0 flex-wrap gap-3">
-            <CtaLink to="/contact">Contact sales <ArrowRight className="h-4 w-4" /></CtaLink>
-            <CtaLink to="/applications" variant="outline">See deployments</CtaLink>
+            <CtaLink to="/contact">
+              Contact Sales <ArrowRight className="h-4 w-4" />
+            </CtaLink>
+            <CtaLink to="/demo" variant="outline">
+              Request a Demo
+            </CtaLink>
           </div>
         </div>
       </section>
