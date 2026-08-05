@@ -24,7 +24,6 @@ export function SiteFooter() {
           <h4 className="font-display text-sm font-semibold text-ink">Platform</h4>
           <ul className="mt-4 space-y-2.5 text-sm text-muted-foreground">
             <li><Link to="/products" className="hover:text-ink">Products</Link></li>
-            <li><Link to="/technology" className="hover:text-ink">Technology</Link></li>
             <li><Link to="/applications" className="hover:text-ink">Applications</Link></li>
             <li><Link to="/clinical-validation" className="hover:text-ink">Clinical Validation</Link></li>
           </ul>
@@ -35,7 +34,6 @@ export function SiteFooter() {
           <ul className="mt-4 space-y-2.5 text-sm text-muted-foreground">
             <li><Link to="/about" className="hover:text-ink">About</Link></li>
             <li><Link to="/patents" className="hover:text-ink">Patents & IP</Link></li>
-            <li><Link to="/investors" className="hover:text-ink">Investors</Link></li>
             <li><Link to="/faq" className="hover:text-ink">FAQ</Link></li>
             <li><Link to="/contact" className="hover:text-ink">Contact</Link></li>
           </ul>
